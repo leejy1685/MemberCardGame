@@ -12,7 +12,6 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        Debug.Log("OpenCard »£√‚µ !");
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false); 
