@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
-{
+{   
+    //Singleton
     public static AudioManager instance;
 
+    
     AudioSource audioSource;
-    public AudioClip clip;
+    public AudioClip clip;  //BGM
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         audioSource.clip = clip;
-        audioSource.Play();
+        audioSource.Play(); //loop play
     }
 
 
