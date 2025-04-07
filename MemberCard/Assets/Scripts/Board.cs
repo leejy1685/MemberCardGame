@@ -17,8 +17,8 @@ public class Board : MonoBehaviour
             GameObject go = Instantiate(card,this.transform);
 
 
-            float x = (i % 4) * 1.4f - 2.1f;
-            float y = (i / 4) * 1.4f - 3.3f;
+            float x = (i % 4) * 1.2f - 1.8f;
+            float y = (i / 4) * 1.2f - 3.9f;
             go.transform.position = new Vector2(x, y);
 
             Debug.Log(arr[i]);
