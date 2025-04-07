@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public Transform cards;
-    public GameObject card;
+    public Transform Cards;
+    public GameObject Card;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,7 @@ public class Board : MonoBehaviour
         arr = arr.OrderBy(x => Random.Range(0f, 9f)).ToArray();
         for (int i = 0; i < 20; i++)
         {
-            GameObject go = Instantiate(card,this.transform);
+            GameObject go = Instantiate(Card,this.transform);
 
 
             float x = (i % 4) * 1.2f - 1.8f;
