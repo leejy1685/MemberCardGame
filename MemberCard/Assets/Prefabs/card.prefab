@@ -196,9 +196,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7878904985529804092}
   - component: {fileID: 1959589834142908464}
-  - component: {fileID: 3919057290319200530}
+  - component: {fileID: 5705179846895663952}
   m_Layer: 0
-  m_Name: Card
+  m_Name: card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3919057290319200530
+--- !u!114 &5705179846895663952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,14 +251,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6580745696826011366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22f9b85b976eaf4cafe14916bad3ca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 70333be266fada041b86ba17ae2ed57c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
   front: {fileID: 6201737150195331758}
   back: {fileID: 6910304473505130387}
   anim: {fileID: 1959589834142908464}
-  frontImage: {fileID: 1348554181187616536}
+  frontImage: {fileID: 0}
 --- !u!1 &6910304473505130387
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3919057290319200530}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1
