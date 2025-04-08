@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Text scoreTxt;
     public Text stageTxt;
     public GameObject endPanel;
+    public GameObject clearPanel;
 
     float time = 0.0f;
     int score = 0;
@@ -79,8 +80,10 @@ public class GameManager : MonoBehaviour
 
             if(cardCount == 0) // 모두 맞추면 게임 종료
             {
+                AudioManager.instance.BGMSound();
                 Gameover();
-                ShowEndUI();
+                clearPanel.SetActive(true);
+                //ShowEndUI();
             }
         }
         else

@@ -13,10 +13,11 @@ public class Button : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    
     public void StartGame()
     {
+        Time.timeScale = 1.0f;
         audioSource.PlayOneShot(clip);
+        AudioManager.instance.BGMSound();
         Invoke("StartGameInvoke", 0.5f);
     }
 
@@ -25,6 +26,11 @@ public class Button : MonoBehaviour
         Time.timeScale = 1.0f;
         AudioManager.instance.BGMSound();
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void stageButton()
+    {
+        SceneManager.LoadScene("StageScene");
     }
 
     void StartGameInvoke()
