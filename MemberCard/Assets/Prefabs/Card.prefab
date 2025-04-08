@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1959589834142908464}
   - component: {fileID: 3919057290319200530}
   m_Layer: 0
-  m_Name: card
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,6 @@ MonoBehaviour:
   front: {fileID: 6201737150195331758}
   back: {fileID: 6910304473505130387}
   anim: {fileID: 1959589834142908464}
-  clip: {fileID: 0}
   frontImage: {fileID: 1348554181187616536}
 --- !u!1 &6910304473505130387
 GameObject:
