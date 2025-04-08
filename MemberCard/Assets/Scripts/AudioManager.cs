@@ -9,7 +9,8 @@ public class AudioManager : MonoBehaviour
 
     
     AudioSource audioSource;
-    public AudioClip clip;  //BGM
+    public AudioClip BGMclip;  //BGM
+    public AudioClip timeOutClip;   //timeOut
 
     private void Awake()
     {
@@ -25,7 +26,18 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.clip = clip;
+        BGMSound();
+    }
+
+    public void timeOutSound()
+    {
+        audioSource.clip = timeOutClip;
+        audioSource.Play(); //loop play
+    }
+
+    public void BGMSound()
+    {
+        audioSource.clip = BGMclip;
         audioSource.Play(); //loop play
     }
 
