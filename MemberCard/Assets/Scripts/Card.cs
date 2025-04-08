@@ -25,8 +25,8 @@ public class Card : MonoBehaviour
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
-        /*
-        if (GameManager.Instance.firstCard == null)
+
+        /*if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
@@ -34,7 +34,7 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.isMatched();
-        }*/
+        }*///기능 대기 중
     }
     /*public void DestroyCard()
     {
@@ -53,10 +53,10 @@ public class Card : MonoBehaviour
 
     void CloseCardInvoke()
     {
-        anim.SetBool("isOepn", false);
+        anim.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);
-    }*/
+    }*///기능 대기 중
     public SpriteRenderer frontImage;
 
     public void setting(int number)
