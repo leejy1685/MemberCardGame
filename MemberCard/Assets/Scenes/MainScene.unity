@@ -1798,7 +1798,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a3b49b6821722438b9fc1aef08b1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstCard: {fileID: 0}
+  secondCard: {fileID: 0}
   timeTxt: {fileID: 2129876430}
+  scoreTxt: {fileID: 0}
+  stageTxt: {fileID: 0}
+  endPanel: {fileID: 0}
+  clearPanel: {fileID: 0}
+  cardCount: 0
+  matchClip: {fileID: 0}
+  notMatchClip: {fileID: 0}
 --- !u!4 &1476386036
 Transform:
   m_ObjectHideFlags: 0
@@ -2859,7 +2868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cards: {fileID: 0}
-  Card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
+  card: {fileID: 0}
 --- !u!4 &2145328471
 Transform:
   m_ObjectHideFlags: 0
