@@ -1017,7 +1017,6 @@ GameObject:
   - component: {fileID: 762564922}
   - component: {fileID: 762564925}
   - component: {fileID: 762564924}
-  - component: {fileID: 762564926}
   m_Layer: 5
   m_Name: ReText
   m_TagString: Untagged
@@ -1142,7 +1141,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762564926}
+      - m_Target: {fileID: 762564924}
         m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
@@ -1154,18 +1153,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &762564926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762564920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2530d8fd4b3ec646bc581a4a0f9e8ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &906853068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a3b49b6821722438b9fc1aef08b1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTxt: {fileID: 2129876430}
 --- !u!4 &1476386036
 Transform:
   m_ObjectHideFlags: 0
@@ -2364,9 +2350,8 @@ GameObject:
   - component: {fileID: 2009042404}
   - component: {fileID: 2009042403}
   - component: {fileID: 2009042402}
-  - component: {fileID: 2009042406}
   m_Layer: 5
-  m_Name: ReText2
+  m_Name: ReText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,7 +2432,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009042406}
+      - m_Target: {fileID: 2009042402}
         m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
@@ -2501,18 +2486,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009042400}
   m_CullTransparentMesh: 1
---- !u!114 &2009042406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009042400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2530d8fd4b3ec646bc581a4a0f9e8ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2084141894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,7 +2811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2145328471}
-  - component: {fileID: 2145328470}
+  - component: {fileID: 2145328472}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -2846,20 +2819,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2145328470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145328469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96aaba87b37f9ee4ead2f2e39e0b8b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cards: {fileID: 0}
-  Card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!4 &2145328471
 Transform:
   m_ObjectHideFlags: 0
@@ -2875,6 +2834,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145328472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145328469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6ef8b7c7952544f8372160bed6ad0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cards: {fileID: 0}
+  card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
