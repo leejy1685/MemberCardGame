@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         // time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
     }
-    public void cardMached()
+    public void isMatched()
     {
         if (firstCard.idx == secondCard.idx)
         {
