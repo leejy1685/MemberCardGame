@@ -16,6 +16,7 @@ public class StartButton : MonoBehaviour
 
     public void StartGame()
     {
+        //AudioManager.instance.timeOutSound(); //test
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }
