@@ -13,9 +13,9 @@ public class Button : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    
     public void StartGame()
     {
+        Time.timeScale = 1.0f;
         audioSource.PlayOneShot(clip);
         AudioManager.instance.BGMSound();
         Invoke("StartGameInvoke", 0.5f);
