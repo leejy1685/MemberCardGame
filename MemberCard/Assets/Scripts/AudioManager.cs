@@ -20,7 +20,10 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+        else
+        {
+            Destroy(gameObject);            // 중복재생방지
+        }
     }
 
     void Start()

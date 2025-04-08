@@ -7,6 +7,6 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public void Retry()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("StartScene");
     }
 }
