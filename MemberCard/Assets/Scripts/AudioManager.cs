@@ -9,8 +9,9 @@ public class AudioManager : MonoBehaviour
 
     
     AudioSource audioSource;
-    public AudioClip BGMclip;  //BGM
+    public AudioClip BGMClip;  //BGM
     public AudioClip timeOutClip;   //timeOut
+    public AudioClip hurryUpSound;  //hurry up
 
     private void Awake()
     {
@@ -31,13 +32,14 @@ public class AudioManager : MonoBehaviour
 
     public void timeOutSound()
     {
+        audioSource.PlayOneShot(hurryUpSound);  //one play
         audioSource.clip = timeOutClip;
         audioSource.Play(); //loop play
     }
 
     public void BGMSound()
     {
-        audioSource.clip = BGMclip;
+        audioSource.clip = BGMClip;
         audioSource.Play(); //loop play
     }
 
