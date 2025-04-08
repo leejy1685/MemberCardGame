@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +19,13 @@ public class GameManager : MonoBehaviour
     float time = 0.0f;
     int score = 0;
     int stage = 1;
+    bool time20 = true;
 
     public int cardCount = 0;
 
     AudioSource audioSource;
+    public AudioClip matchClip; //match sound
+    public AudioClip notMatchClip;  //not match sound
 
     void Awake()
     {
@@ -42,6 +46,11 @@ public class GameManager : MonoBehaviour
             Gameover();
             ShowEndUI();
         }
+        else if(time > 20.0f && time20)
+        {
+            AudioManager.instance.timeOutSound();
+            time20 = false;
+        }
         else
         {
             time += Time.deltaTime;
@@ -53,6 +62,8 @@ public class GameManager : MonoBehaviour
     {
         if (firstCard.idx == secondCard.idx)
         {
+            audioSource.PlayOneShot(matchClip);
+
             // idx가 일치하면 destroyCard
             firstCard.DestroyCard();
             secondCard.DestroyCard();
@@ -68,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(notMatchClip);
             // idx가 일치 하지 않으면 closeCard
             firstCard.CloseCard();
             secondCard.CloseCard();

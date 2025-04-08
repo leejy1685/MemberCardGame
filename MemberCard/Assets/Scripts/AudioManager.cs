@@ -9,7 +9,9 @@ public class AudioManager : MonoBehaviour
 
     
     AudioSource audioSource;
-    public AudioClip clip;  //BGM
+    public AudioClip BGMClip;  //BGM
+    public AudioClip timeOutClip;   //timeOut
+    public AudioClip hurryUpSound;  //hurry up
 
     private void Awake()
     {
@@ -18,6 +20,10 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
     }
 
@@ -25,7 +31,19 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.clip = clip;
+        BGMSound();
+    }
+
+    public void timeOutSound()
+    {
+        audioSource.PlayOneShot(hurryUpSound);  //one play
+        audioSource.clip = timeOutClip;
+        audioSource.Play(); //loop play
+    }
+
+    public void BGMSound()
+    {
+        audioSource.clip = BGMClip;
         audioSource.Play(); //loop play
     }
 
