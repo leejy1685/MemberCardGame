@@ -19,12 +19,6 @@ public class GameManager : MonoBehaviour
     float time = 0.0f;
     int score = 0;
     public int stage = 1;
-
-    public GameManager(int stage)
-    {
-        this.stage = stage;
-    }
-
     bool time20 = true;
 
     public int cardCount = 0;

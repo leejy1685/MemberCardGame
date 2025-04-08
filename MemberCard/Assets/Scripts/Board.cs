@@ -24,6 +24,8 @@ public class Board : MonoBehaviour
                 float x = (i % 3) * 1.4f - 1.4f;
                 float y = (i / 3) * 1.4f - 2.8f;
                 go.transform.position = new Vector2(x, y);
+                float delayTime = i * 0.1f; // Delay time for each card
+                go.GetComponent<Animator>().SetFloat("Delay", delayTime);
 
                 go.GetComponent<Card>().setting(arr[i]);
 
@@ -69,6 +71,8 @@ public class Board : MonoBehaviour
                 float x = (i % 4) * 1.2f - 1.8f;
                 float y = (i / 4) * 1.2f - 2.8f;
                 go.transform.position = new Vector2(x, y);
+                float delayTime = i * 0.1f; // Delay time for each card
+                go.GetComponent<Animator>().SetFloat("Delay", delayTime);
                 go.GetComponent<Card>().setting(arr[i]);
 
 
