@@ -1803,6 +1803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
+  playerDB: {fileID: 0}
   timeTxt: {fileID: 2129876430}
   scoreTxt: {fileID: 1715678641}
   stageTxt: {fileID: 2102539218}
@@ -2491,9 +2492,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2009042400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f59794a26122564f8b94b0fe5fa6af1, type: 3}
+  m_Script: {fileID: 11500000, guid: 18eee1ca082cf1849b53b48362fe0840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}
 --- !u!114 &2009042403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,8 +2541,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2009042402}
-        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
-        m_MethodName: Retry
+        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
