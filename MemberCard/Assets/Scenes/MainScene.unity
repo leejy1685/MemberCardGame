@@ -1785,7 +1785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a3b49b6821722438b9fc1aef08b1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTxt: {fileID: 2129876430}
 --- !u!4 &1476386036
 Transform:
   m_ObjectHideFlags: 0
@@ -2812,7 +2811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2145328471}
-  - component: {fileID: 2145328470}
+  - component: {fileID: 2145328472}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -2820,20 +2819,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2145328470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145328469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96aaba87b37f9ee4ead2f2e39e0b8b25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cards: {fileID: 0}
-  Card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!4 &2145328471
 Transform:
   m_ObjectHideFlags: 0
@@ -2849,6 +2834,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145328472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145328469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6ef8b7c7952544f8372160bed6ad0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cards: {fileID: 0}
+  card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
