@@ -14,7 +14,17 @@ public class Card : MonoBehaviour
     {
         anim.SetBool("isOpen", true);
         front.SetActive(true);
-        back.SetActive(false); 
+        back.SetActive(false);
+
+        if (GameManager.Instance.firstCard == null)
+        {
+            GameManager.Instance.firstCard = this;
+        }
+        else
+        {
+            GameManager.Instance.secondCard = this;
+            GameManager.Instance.isMatched();
+        }
     }
 
     public SpriteRenderer frontImage;
@@ -22,6 +32,6 @@ public class Card : MonoBehaviour
     public void setting(int number)
     {
         idx = number;
-        frontImage.sprite = Resources.Load<Sprite>($"card{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");
     }
 }
