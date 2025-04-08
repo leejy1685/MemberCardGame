@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class Button : MonoBehaviour
 {
     AudioSource audioSource;
     public AudioClip clip;  //go sound
@@ -13,12 +13,18 @@ public class StartButton : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-
+    
     public void StartGame()
     {
-        //AudioManager.instance.timeOutSound(); //test
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
+    }
+
+    public void resetButton()
+    {   
+        Time.timeScale = 1.0f;
+        AudioManager.instance.BGMSound();
+        SceneManager.LoadScene("StartScene");
     }
 
     void StartGameInvoke()
