@@ -9,10 +9,11 @@ public class Board : MonoBehaviour
 {
     public Transform Cards;
     public GameObject card;
-    int currentStage = GameManager.Instance.stage;
+    
     // Start is called before the first frame update
     void Start()
     {
+        int currentStage = GameManager.Instance.stage;
         if (currentStage == 1)
         {
             int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };
@@ -21,8 +22,8 @@ public class Board : MonoBehaviour
             {
                 GameObject go = Instantiate(card, this.transform);
 
-                float x = (i % 3) * 1.4f - 1.4f;
-                float y = (i / 3) * 1.4f - 2.8f;
+                float x = (i % 4) * 1.2f - 1.8f;
+                float y = (i / 4) * 1.2f - 2.8f;
                 go.transform.position = new Vector2(x, y);
 
                 go.GetComponent<Card>().setting(arr[i]);
@@ -58,24 +59,6 @@ public class Board : MonoBehaviour
                 go.GetComponent<Card>().setting(arr[i]);
             }
         }
-
-        else // position check(delete later)
-        {
-            int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-            arr = arr.OrderBy(x => Random.Range(0f, 7f)).ToArray();
-            for (int i = 0; i < 16; i++)
-            {
-                GameObject go = Instantiate(card, this.transform);
-                float x = (i % 4) * 1.2f - 1.8f;
-                float y = (i / 4) * 1.2f - 2.8f;
-                go.transform.position = new Vector2(x, y);
-                go.GetComponent<Card>().setting(arr[i]);
-
-
-            }
-
-        }
-
 
 
     }
