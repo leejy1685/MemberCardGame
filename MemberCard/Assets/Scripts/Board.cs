@@ -21,9 +21,9 @@ public class Board : MonoBehaviour
             go.transform.position = new Vector2(x, y);
 
             go.GetComponent<Card>().setting(arr[i]);
-            
-            
         }
+
+        GameManager.Instance.cardCount = arr.Length;
     }
 
     // Update is called once per frame

@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 
             if(cardCount == 0) // 모두 맞추면 게임 종료
             {
+                AudioManager.instance.BGMSound();
                 Gameover();
                 clearPanel.SetActive(true);
                 //ShowEndUI();
