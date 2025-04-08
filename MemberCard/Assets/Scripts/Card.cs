@@ -67,7 +67,7 @@ public class Card : MonoBehaviour
     private void DestroyCardInvoke()
     {
         anim.SetTrigger("Destroy");
-        Destroy(gameObject, 0.5f);
+        Destroy(this.gameObject, 0.5f);
     }
     public void setting(int number)
     {
