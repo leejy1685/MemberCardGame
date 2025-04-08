@@ -10,8 +10,18 @@ public class Card : MonoBehaviour
     public GameObject back;
     public Animator anim;
 
+    AudioSource audioSource;
+    public AudioClip clip;  //flip sound
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void OpenCard()
     {
+        audioSource.PlayOneShot(clip);
+
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
