@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public Text scoreTxt;
     public Text stageTxt;
     public GameObject endPanel;
+    public GameObject clearPanel;
 
-    float time = 60.0f;
+    float time = 0.0f;
     int score = 0;
     int stage = 1;
     bool time20 = true;
@@ -39,22 +40,23 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        // Time Attack
-        if (time < 0.0f) // Gameover
+        // 시간 제한
+        if (time > 30.0f)
         {
-            time = 0.0f;
+            time = 30.0f;
             Gameover();
             ShowEndUI();
         }
-        else if (time < 20.0f && time20)
+        else if(time > 20.0f && time20)
         {
             AudioManager.instance.timeOutSound();
             time20 = false;
         }
         else
         {
-            time -= Time.deltaTime;
+            time += Time.deltaTime;
         }
+        // time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
     }
     public void isMatched()
@@ -63,24 +65,24 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(matchClip);
 
-            // Matched destroyCard
+            // idx가 일치하면 destroyCard
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            
+            // Board에서 arr[i]값 받아오기
             cardCount -= 2;
             score++;
 
-            if(cardCount == 0) //GameClear
+            if(cardCount == 0) // 모두 맞추면 게임 종료
             {
                 Gameover();
-                ShowEndUI(); // ShowEndUI -> ShowNextUI
+                clearPanel.SetActive(true);
+                //ShowEndUI();
             }
         }
         else
         {
             audioSource.PlayOneShot(notMatchClip);
-
-            // notMatched closeCard
+            // idx가 일치 하지 않으면 closeCard
             firstCard.CloseCard();
             secondCard.CloseCard();
         }
