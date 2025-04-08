@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:MemberCard/Assets/Resources.meta
 guid: c3a6ab9459863304c8494dfc52e3398f
+========
+guid: 0153547635d99df46931242bbb790ae6
+>>>>>>>> origin/JunYeong_StartScene:MemberCard/Assets/Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
