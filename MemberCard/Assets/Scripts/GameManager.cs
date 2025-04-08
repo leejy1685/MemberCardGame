@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Text stageTxt;
     public GameObject endPanel;
 
-    float time = 0.0f;
+    float time = 60.0f;
     int score = 0;
     int stage = 1;
     bool time20 = true;
@@ -40,22 +40,21 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Time Attack
-        if (time > 60.0f)
+        if (time < 0.0f) // Gameover
         {
-            time = 60.0f;
+            time = 0.0f;
             Gameover();
             ShowEndUI();
         }
-        else if(time > 20.0f && time20)
+        else if (time < 20.0f && time20)
         {
             AudioManager.instance.timeOutSound();
             time20 = false;
         }
         else
         {
-            time += Time.deltaTime;
+            time -= Time.deltaTime;
         }
-        // time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
     }
     public void isMatched()
@@ -71,15 +70,16 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             score++;
 
-            if(cardCount == 0) //Gameover
+            if(cardCount == 0) //GameClear
             {
                 Gameover();
-                ShowEndUI();
+                ShowEndUI(); // ShowEndUI -> ShowNextUI
             }
         }
         else
         {
             audioSource.PlayOneShot(notMatchClip);
+
             // notMatched closeCard
             firstCard.CloseCard();
             secondCard.CloseCard();
