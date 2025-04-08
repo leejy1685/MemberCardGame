@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cards: {fileID: 0}
-  Card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
+  card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!4 &1098069396
 Transform:
   m_ObjectHideFlags: 0
