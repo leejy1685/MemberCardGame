@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        // TimeAttack
+        // 시간 제한
         if (time > 30.0f)
         {
             time = 30.0f;
@@ -53,14 +53,14 @@ public class GameManager : MonoBehaviour
     {
         if (firstCard.idx == secondCard.idx)
         {
-            // destroyCard
+            // idx가 일치하면 destroyCard
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            
+            // Board에서 arr[i]값 받아오기
             cardCount -= 2;
             score++;
 
-            if(cardCount == 0)
+            if(cardCount == 0) // 모두 맞추면 게임 종료
             {
                 Gameover();
                 ShowEndUI();
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // closeCard
+            // idx가 일치 하지 않으면 closeCard
             firstCard.CloseCard();
             secondCard.CloseCard();
         }
