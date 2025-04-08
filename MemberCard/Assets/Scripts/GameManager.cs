@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public Text scoreTxt;
     public Text stageTxt;
-    public GameObject endTxt;
+    public GameObject endPanel;
 
     float time = 0.0f;
     int score = 0;
@@ -36,10 +36,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // 시간 제한
-        if (time > 10.0f)
+        if (time > 30.0f)
         {
             time = 30.0f;
             Gameover();
+            ShowEndUI();
         }
         else
         {
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
             if(cardCount == 0) // 모두 맞추면 게임 종료
             {
                 Gameover();
+                ShowEndUI();
             }
         }
         else
@@ -76,8 +78,12 @@ public class GameManager : MonoBehaviour
 
     public void Gameover()
     {
-        endTxt.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void ShowEndUI()
+    {
+        endPanel.SetActive(true);
 
         scoreTxt.text = score.ToString();
         stageTxt.text = stage.ToString();
