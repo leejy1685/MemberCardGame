@@ -13,7 +13,7 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int currentStage = GameManager.Instance.stage;
+        int currentStage = GameManager.Instance.getStage();
         if (currentStage == 1)
         {
             int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };
@@ -29,6 +29,7 @@ public class Board : MonoBehaviour
                 go.GetComponent<Card>().setting(arr[i]);
 
             }
+            GameManager.Instance.cardCount = arr.Length;
 
         }
         else if (currentStage == 2)
@@ -43,8 +44,9 @@ public class Board : MonoBehaviour
                 go.transform.position = new Vector2(x, y);
                 go.GetComponent<Card>().setting(arr[i]);
             }
+            GameManager.Instance.cardCount = arr.Length;
         }
-        else if (currentStage == 3)
+        else if (currentStage >= 3)
         {
             int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
             arr = arr.OrderBy(x => Random.Range(0f, 9f)).ToArray();
@@ -58,6 +60,7 @@ public class Board : MonoBehaviour
 
                 go.GetComponent<Card>().setting(arr[i]);
             }
+            GameManager.Instance.cardCount = arr.Length;
         }
 
 

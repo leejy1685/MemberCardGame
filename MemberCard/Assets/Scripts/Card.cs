@@ -9,22 +9,24 @@ public class Card : MonoBehaviour
     public GameObject front;
     public GameObject back;
     public Animator anim;
-
+    public SpriteRenderer frontImage;
     AudioSource audioSource;
     public AudioClip clip;  //flip sound
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        front.SetActive(false);
+        back.SetActive(true);
     }
 
     public void OpenCard()
     {
-        audioSource.PlayOneShot(clip);
+        anim.SetTrigger("flip");
 
-        anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
+        if (clip != null)
+            audioSource.PlayOneShot(clip);
 
         if (GameManager.Instance.firstCard == null)
         {
@@ -34,34 +36,43 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.isMatched();
-        }//기능 대기 중
+        }
     }
-    public void DestroyCard()
-    {
-        Invoke("DestoryCardInvoke", 1.0f);
-    }
-
-    void DestoryCardInvoke()
-    {
-        Destroy(gameObject);
-    }
-
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.5f);
     }
 
-    void CloseCardInvoke()
+    private void CloseCardInvoke()
     {
-        anim.SetBool("isOpen", false);
+        anim.SetTrigger("flipback");
+    }
+    public void SwitchToFront()
+    {
+        front.SetActive(true);
+        back.SetActive(false);
+    }
+
+    public void SwitchToBack()
+    {
         front.SetActive(false);
         back.SetActive(true);
-    }//기능 대기 중
-    public SpriteRenderer frontImage;
+    }
 
+    public void DestroyCard()
+    {
+        Invoke("DestroyCardInvoke", 0.5f);
+    }
+
+    private void DestroyCardInvoke()
+    {
+        anim.SetTrigger("Destroy");
+        Destroy(this.gameObject,0.3f);
+    }
     public void setting(int number)
     {
         idx = number;
         frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");
     }
 }
+
