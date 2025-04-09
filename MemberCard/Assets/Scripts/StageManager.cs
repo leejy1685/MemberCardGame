@@ -27,5 +27,8 @@ public class StageManager : MonoBehaviour
         {
             hiddenStage.SetActive(true);
         }
+
+
+       
     }
 }

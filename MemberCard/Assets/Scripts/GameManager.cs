@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        stage = PlayerPrefs.GetInt("stage");
-        Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        getStage();
+        Time.timeScale = 1.0f;
 
-        if(stage == 4)
+        if(stage == 4)  //hidden stage
         {
             InvokeRepeating("MakeInk", 0.0f, 1.5f);
         }

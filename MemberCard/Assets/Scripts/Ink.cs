@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ink : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         float x = Random.Range(-2.0f, 2.0f);
