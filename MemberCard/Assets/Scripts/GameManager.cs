@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(true);
 
         scoreTxt.text = score.ToString();
-        stageTxt.text = PlayerPrefs.GetInt("stageClear").ToString();
+        stageTxt.text = stage.ToString();
     }
     private void ShowClearUI()
     {
@@ -139,6 +139,11 @@ public class GameManager : MonoBehaviour
         {
             stage--;
             bestStage = stage;
+        }
+        //maxStage
+        if(bestStage > 4)
+        {
+            bestStage = 4;
         }
 
         PlayerPrefs.SetInt("stageClear", bestStage);

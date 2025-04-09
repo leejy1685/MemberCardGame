@@ -518,8 +518,6 @@ GameObject:
   - component: {fileID: 305088576}
   - component: {fileID: 305088575}
   - component: {fileID: 305088574}
-  - component: {fileID: 305088573}
-  - component: {fileID: 305088572}
   m_Layer: 5
   m_Name: MainButton5
   m_TagString: Untagged
@@ -546,30 +544,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -240}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &305088572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305088570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2530d8fd4b3ec646bc581a4a0f9e8ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &305088573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305088570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f59794a26122564f8b94b0fe5fa6af1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &305088574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,9 +588,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 305088572}
-        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
-        m_MethodName: Retry
+      - m_Target: {fileID: 1543178855}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: stageButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
