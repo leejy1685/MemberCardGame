@@ -1821,6 +1821,7 @@ MonoBehaviour:
   scoreTxt: {fileID: 1715678641}
   stageTxt: {fileID: 2102539218}
   endPanel: {fileID: 1228786631}
+  stage: 1
   cardCount: 0
   matchClip: {fileID: 8300000, guid: 8e505590a839e68448f2c63d738a79dc, type: 3}
   notMatchClip: {fileID: 8300000, guid: 1948036e8072f5f41a9608eef094e0a7, type: 3}
