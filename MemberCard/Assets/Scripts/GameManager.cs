@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public Text scoreTxt;
     public Text stageTxt;
 
-    public GameObject hiddenStageStart;
-    public GameObject ink;
     public GameObject endPanel;
     public GameObject[] stageClearPanel = new GameObject[4];
 
@@ -42,14 +40,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        stage = PlayerPrefs.GetInt("stage");
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
 
-        if(stage == 4)
-        {
-            InvokeRepeating("MakeInk", 0.0f, 1.0f);
-        }
+        // TestDebug
+        // Debug.Log($"clearStage : {PlayerPrefs.GetInt("stageClear")}");
     }
     void Update()
     {
@@ -116,44 +111,29 @@ public class GameManager : MonoBehaviour
         scoreTxt.text = score.ToString();
         stageTxt.text = PlayerPrefs.GetInt("stageClear").ToString();
     }
-    private void ShowClearUI()
+    public void ShowClearUI()
     {
-        if(stage == 3 && time <= 20)
-        {
-            hiddenStageStart.SetActive(false);
-        }
         stageClearPanel[stage-1].SetActive(true);
     }
 
     public void PlayerSaveData()
     {
-        int bestStage = PlayerPrefs.GetInt("stageClear");
         stage++;
         //best clear data save
+        int bestStage = PlayerPrefs.GetInt("stageClear");
         if (bestStage < stage)
         {
-            bestStage = stage;
-        }
-        //hidden stage open condition
-        if (stage == 4 && time <= 20)
-        {
-            stage--;
             bestStage = stage;
         }
 
         PlayerPrefs.SetInt("stageClear", bestStage);
         PlayerPrefs.Save();
-
+        //Debug.Log($"스테이지 저장 : {nextStage}");
     }
 
     public int getStage()
     {
         stage = PlayerPrefs.GetInt("stage");
         return stage;
-    }
-
-    void MakeInk()
-    {
-        Instantiate(ink);
     }
 }
