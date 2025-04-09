@@ -5394,6 +5394,8 @@ MonoBehaviour:
   timeTxt: {fileID: 1261528010}
   scoreTxt: {fileID: 1822268877}
   stageTxt: {fileID: 442994126}
+  hiddenStageStart: {fileID: 964256111}
+  ink: {fileID: 2261445395826180462, guid: 435aebe9799c5b948981cd37fc0743cb, type: 3}
   endPanel: {fileID: 1360658301}
   stageClearPanel:
   - {fileID: 435903930}
