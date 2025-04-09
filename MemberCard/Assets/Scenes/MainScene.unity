@@ -1017,7 +1017,6 @@ GameObject:
   - component: {fileID: 762564922}
   - component: {fileID: 762564925}
   - component: {fileID: 762564924}
-  - component: {fileID: 762564926}
   m_Layer: 5
   m_Name: ReText
   m_TagString: Untagged
@@ -1142,9 +1141,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762564926}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: resetButton
+      - m_Target: {fileID: 762564924}
+        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1154,19 +1153,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &762564926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762564920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18eee1ca082cf1849b53b48362fe0840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
 --- !u!1 &906853068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,8 +1765,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1476386036}
+  - component: {fileID: 1476386035}
   - component: {fileID: 1476386037}
-  - component: {fileID: 1476386038}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1788,6 +1774,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1476386035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476386034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158e341845cb4a64dbd68e020fde7fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstCard: {fileID: 3919057290319200530, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
+  secondCard: {fileID: 3919057290319200530, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
+  timeTxt: {fileID: 2129876430}
+  scoreTxt: {fileID: 1715678641}
+  stageTxt: {fileID: 2102539218}
+  endPanel: {fileID: 1228786631}
+  stage: 1
+  cardCount: 0
+  matchClip: {fileID: 8300000, guid: 8e505590a839e68448f2c63d738a79dc, type: 3}
+  notMatchClip: {fileID: 8300000, guid: 1948036e8072f5f41a9608eef094e0a7, type: 3}
 --- !u!4 &1476386036
 Transform:
   m_ObjectHideFlags: 0
@@ -1803,28 +1811,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1476386037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476386034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158e341845cb4a64dbd68e020fde7fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstCard: {fileID: 0}
-  secondCard: {fileID: 0}
-  timeTxt: {fileID: 2129876430}
-  scoreTxt: {fileID: 1715678641}
-  stageTxt: {fileID: 2102539218}
-  endPanel: {fileID: 1228786631}
-  cardCount: 0
-  matchClip: {fileID: 8300000, guid: 8e505590a839e68448f2c63d738a79dc, type: 3}
-  notMatchClip: {fileID: 8300000, guid: 1948036e8072f5f41a9608eef094e0a7, type: 3}
---- !u!82 &1476386038
+--- !u!82 &1476386037
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2470,14 +2457,13 @@ GameObject:
   - component: {fileID: 2009042404}
   - component: {fileID: 2009042403}
   - component: {fileID: 2009042402}
-  - component: {fileID: 2009042406}
   m_Layer: 5
   m_Name: ReText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2009042401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2553,9 +2539,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009042406}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: resetButton
+      - m_Target: {fileID: 2009042402}
+        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2607,19 +2593,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009042400}
   m_CullTransparentMesh: 1
---- !u!114 &2009042406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009042400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18eee1ca082cf1849b53b48362fe0840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
 --- !u!1 &2084141894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,7 +2918,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2145328471}
-  - component: {fileID: 2145328472}
+  - component: {fileID: 2145328470}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -2953,6 +2926,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2145328470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145328469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6ef8b7c7952544f8372160bed6ad0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cards: {fileID: 0}
+  card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!4 &2145328471
 Transform:
   m_ObjectHideFlags: 0
@@ -2968,20 +2955,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2145328472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145328469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6ef8b7c7952544f8372160bed6ad0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cards: {fileID: 0}
-  card: {fileID: 6580745696826011366, guid: ee357b91ae5229943973115dbc729d5b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
