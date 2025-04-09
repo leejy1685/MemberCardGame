@@ -47,11 +47,12 @@ public class Button : MonoBehaviour
         PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
         Time.timeScale = 1.0f;
         audioSource.PlayOneShot(clip);
-        Invoke("StartGameInvoke", 0.5f);
+        SceneManager.LoadScene("MainScene");
     }
 
     public void stageButton()
     {
+        AudioManager.instance.BGMSound();
         SceneManager.LoadScene("StageScene");
     }
 
