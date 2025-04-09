@@ -67,13 +67,3 @@ public class GameManager : MonoBehaviour
         Instantiate(Ink, randomPos, Quaternion.identity);
     }
 }
-
-
-
-
-
-
-
-
-
-}
