@@ -37,16 +37,4 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-
-    public void SaveDataResetBtn()
-    {
-        // TestDebug
-        Debug.Log($"초기화 전 {PlayerPrefs.GetInt("stageClear")}");
-
-        PlayerPrefs.SetInt("stageClear", 1);
-        PlayerPrefs.Save();
-
-        // TestDebug
-        Debug.Log($"데이터 초기화 {PlayerPrefs.GetInt("stageClear")}");
-    }
 }

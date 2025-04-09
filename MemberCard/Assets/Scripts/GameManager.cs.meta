@@ -3,16 +3,7 @@ guid: 158e341845cb4a64dbd68e020fde7fd9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - firstCard: {instanceID: 0}
-  - secondCard: {instanceID: 0}
-  - timeTxt: {instanceID: 0}
-  - scoreTxt: {instanceID: 0}
-  - stageTxt: {instanceID: 0}
-  - endPanel: {instanceID: 0}
-  - clearPanel: {instanceID: 0}
-  - matchClip: {instanceID: 0}
-  - notMatchClip: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
