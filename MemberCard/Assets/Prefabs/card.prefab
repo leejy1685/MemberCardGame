@@ -129,7 +129,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7878904985529804092}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dd44e753252a5584f9a5805ad7df9c52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5549b14e834c7ae4fa1709b917fd4efd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,8 +196,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7878904985529804092}
   - component: {fileID: 1959589834142908464}
-  - component: {fileID: 3620158909487998271}
-  - component: {fileID: 1722128723226299018}
+  - component: {fileID: 3919057290319200530}
+  - component: {fileID: 132581003433944667}
   m_Layer: 0
   m_Name: card
   m_TagString: Untagged
@@ -243,7 +243,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &3620158909487998271
+--- !u!114 &3919057290319200530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580745696826011366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22f9b85b976eaf4cafe14916bad3ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idx: 0
+  front: {fileID: 6201737150195331758}
+  back: {fileID: 6910304473505130387}
+  anim: {fileID: 1959589834142908464}
+  clip: {fileID: 8300000, guid: d46c3329bd5584b49a3fbe8074df2912, type: 3}
+  frontImage: {fileID: 1348554181187616536}
+--- !u!82 &132581003433944667
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,24 +357,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1722128723226299018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6580745696826011366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b43af178cbbd247bfbbcdab5f1b399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idx: 0
-  front: {fileID: 6201737150195331758}
-  back: {fileID: 6910304473505130387}
-  anim: {fileID: 1959589834142908464}
-  clip: {fileID: 8300000, guid: d46c3329bd5584b49a3fbe8074df2912, type: 3}
-  frontImage: {fileID: 1348554181187616536}
 --- !u!1 &6910304473505130387
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3919057290319200530}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1

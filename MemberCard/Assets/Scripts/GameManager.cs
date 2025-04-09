@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,14 +9,32 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    // Card에서 1번 2번카드 idx를 넘겨받음
-    //public Card firstCard;
-    //public Card secondCard;
+    public Card firstCard;
+    public Card secondCard;
 
     public Text timeTxt;
-    float time = 0.0f;
+    public Text scoreTxt;
+    public Text stageTxt;
+
+    public GameObject hiddenStageStart;
+    public GameObject ink;
+    public GameObject endPanel;
+    public GameObject[] stageClearPanel = new GameObject[4];
+
+
+    //public GameObject hiddenPanel;
+
+    float time = 60.0f;
+    int score = 0;
+    bool time20 = true;
+
+    int stage;
+    public int cardCount = 0;
 
     AudioSource audioSource;
+    public AudioClip matchClip; //match sound
+    public AudioClip notMatchClip;  //not match sound
+
     void Awake()
     {
         if (Instance == null)
@@ -23,47 +43,122 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        getStage();
+        Time.timeScale = 1.0f;
+
+        if(stage == 4)  //hidden stage
+        {
+            InvokeRepeating("MakeInk", 0.0f, 1.5f);
+        }
     }
     void Update()
     {
-        time += Time.deltaTime;
-        timeTxt.text = time.ToString("N2");
+        GameStart();
+    }
 
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
+    public void GameStart()
+    {
+        if (time < 0.0f)
         {
-            SpawnInk();
-            timer = 0f;
+            time = 0.0f;
+            Gameover();
+            ShowEndUI();
         }
+        else if (time < 20.0f && time20)
+        {
+            AudioManager.instance.timeOutSound();
+            time20 = false;
+        }
+        else
+        {
+            time -= Time.deltaTime;
+        }
+        timeTxt.text = time.ToString("N2");
     }
-    void cardMached()
+    public void Gameover()
     {
-        //if ()
-        //{
-        //    // 서로 idx가 일치하면 destroy
-        //    // Destroy();
-        //}
-        //else
-        //{
-        //    // 일치 하지 않으면 카드 뒤집어 놓음
+        Time.timeScale = 0f;
+    }
+    public void isMatched()
+    {
+        if (firstCard.idx == secondCard.idx)
+        {
+            audioSource.PlayOneShot(matchClip);
 
-        //}
+            firstCard.DestroyCard();
+            secondCard.DestroyCard();
+
+            cardCount -= 2;
+            score++;
+
+            if(cardCount == 0) // Gameclear
+            {
+                AudioManager.instance.BGMSound();
+                Gameover();
+                ShowClearUI();
+                PlayerSaveData();
+            }
+        }
+        else
+        {
+            audioSource.PlayOneShot(notMatchClip);
+
+            firstCard.CloseCard();
+            secondCard.CloseCard();
+        }
+        firstCard = null;
+        secondCard = null;
+    }
+    public void ShowEndUI()
+    {
+        endPanel.SetActive(true);
+
+        scoreTxt.text = score.ToString();
+        stageTxt.text = stage.ToString();
+    }
+    private void ShowClearUI()
+    {
+        if(stage == 3 && time <= 20)
+        {
+            hiddenStageStart.SetActive(false);
+        }
+        stageClearPanel[stage-1].SetActive(true);
     }
 
-    public GameObject Ink;
-    public float spawnInterval = 1.0f; // 먹물 생성 간격
-    public Vector2 spawnAreaMin = new Vector2(-5, -5); // 스폰 영역 최소값
-    public Vector2 spawnAreaMax = new Vector2(5, 5);
-
-    private float timer;
-
-    void SpawnInk()
+    public void PlayerSaveData()
     {
-        Vector2 randomPos = new Vector2(
-            Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-            Random.Range(spawnAreaMin.y, spawnAreaMax.y)
-        );
+        int bestStage = PlayerPrefs.GetInt("stageClear");
+        stage++;
+        //best clear data save
+        if (bestStage < stage)
+        {
+            bestStage = stage;
+        }
+        //hidden stage open condition
+        if (stage == 4 && time <= 20)
+        {
+            stage--;
+            bestStage = stage;
+        }
+        //maxStage
+        if(bestStage > 4)
+        {
+            bestStage = 4;
+        }
 
-        Instantiate(Ink, randomPos, Quaternion.identity);
+        PlayerPrefs.SetInt("stageClear", bestStage);
+        PlayerPrefs.Save();
+
+    }
+
+    public int getStage()
+    {
+        stage = PlayerPrefs.GetInt("stage");
+        return stage;
+    }
+
+    void MakeInk()
+    {
+        Instantiate(ink);
     }
 }

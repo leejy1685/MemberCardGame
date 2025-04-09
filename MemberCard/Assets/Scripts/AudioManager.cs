@@ -22,8 +22,9 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);            // 중복재생방지
+            Destroy(gameObject);
         }
+
     }
 
     void Start()
