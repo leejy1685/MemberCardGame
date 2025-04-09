@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if(stage == 4)
         {
-            InvokeRepeating("MakeInk", 0.0f, 1.0f);
+            InvokeRepeating("MakeInk", 0.0f, 1.5f);
         }
     }
     void Update()
