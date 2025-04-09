@@ -15,39 +15,39 @@ public class Button : MonoBehaviour
 
     public void StartStage1()
     {
+        //for GameManager and Board 
         PlayerPrefs.SetInt("stage", 1);
-        Time.timeScale = 1.0f;
+
         audioSource.PlayOneShot(clip);
-        Invoke("StartGameInvoke", 0.5f);
+        Invoke("StartGameInvoke", 0.5f);    //interbal
     }    
     public void StartStage2()
     {
         PlayerPrefs.SetInt("stage", 2);
-        Time.timeScale = 1.0f;
+
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }    
     public void StartStage3()
     {
         PlayerPrefs.SetInt("stage", 3);
-        Time.timeScale = 1.0f;
+
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }    
     public void StartStageHidden()
     {
         PlayerPrefs.SetInt("stage", 4);
-        Time.timeScale = 1.0f;
+
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }
 
     public void retryButton()
     {
+        //get current stage 
         PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
-        Time.timeScale = 1.0f;
-        audioSource.PlayOneShot(clip);
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene");    //cat't play Invoke
     }
 
     public void stageButton()
