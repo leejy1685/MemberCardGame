@@ -16,14 +16,19 @@ public class GameManager : MonoBehaviour
     public Text scoreTxt;
     public Text stageTxt;
 
+    public GameObject hiddenStageStart;
+    public GameObject ink;
     public GameObject endPanel;
-    public GameObject clearPanel;
+    public GameObject[] stageClearPanel = new GameObject[4];
+
+
     //public GameObject hiddenPanel;
 
     float time = 60.0f;
     int score = 0;
     bool time20 = true;
 
+    int stage;
     public int cardCount = 0;
 
     AudioSource audioSource;
@@ -37,11 +42,14 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        stage = PlayerPrefs.GetInt("stage");
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
 
-        // TestDebug
-        // Debug.Log($"clearStage : {PlayerPrefs.GetInt("stageClear")}");
+        if(stage == 4)
+        {
+            InvokeRepeating("MakeInk", 0.0f, 1.0f);
+        }
     }
     void Update()
     {
@@ -85,13 +93,10 @@ public class GameManager : MonoBehaviour
 
             if(cardCount == 0) // Gameclear
             {
-                PlayerSaveData();
-                // TestDebug
-                // Debug.Log($"clearStage : {PlayerPrefs.GetInt("stageClear")}");
-
-                // ShowNextStageUI();
+                AudioManager.instance.BGMSound();
                 Gameover();
                 ShowClearUI();
+                PlayerSaveData();
             }
         }
         else
@@ -111,21 +116,44 @@ public class GameManager : MonoBehaviour
         scoreTxt.text = score.ToString();
         stageTxt.text = PlayerPrefs.GetInt("stageClear").ToString();
     }
-    public void ShowClearUI()
+    private void ShowClearUI()
     {
-        clearPanel.SetActive(true);
+        if(stage == 3 && time <= 20)
+        {
+            hiddenStageStart.SetActive(false);
+        }
+        stageClearPanel[stage-1].SetActive(true);
     }
-    //public void ShowHiddenUI()
-    //{
-    //    hiddenPanel.SetActive(true);
-    //}
+
     public void PlayerSaveData()
     {
-        int previous = PlayerPrefs.GetInt("stageClear", 1);
-        int nextStage = previous + 1;
+        int bestStage = PlayerPrefs.GetInt("stageClear");
+        stage++;
+        //best clear data save
+        if (bestStage < stage)
+        {
+            bestStage = stage;
+        }
+        //hidden stage open condition
+        if (stage == 4 && time <= 20)
+        {
+            stage--;
+            bestStage = stage;
+        }
 
-        PlayerPrefs.SetInt("stageClear", nextStage);
+        PlayerPrefs.SetInt("stageClear", bestStage);
         PlayerPrefs.Save();
-        Debug.Log($"스테이지 저장 : {nextStage}");
+
+    }
+
+    public int getStage()
+    {
+        stage = PlayerPrefs.GetInt("stage");
+        return stage;
+    }
+
+    void MakeInk()
+    {
+        Instantiate(ink);
     }
 }
