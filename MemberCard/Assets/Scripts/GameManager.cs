@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     float time = 0.0f;
     int score = 0;
-    int stage = 1;
+    public int stage = 1;
     bool time20 = true;
 
     public int cardCount = 0;
