@@ -8,10 +8,10 @@ public class Ink : MonoBehaviour
     void Start()
     {
         float x = Random.Range(-2.0f, 2.0f);
-        float y = Random.Range(-4.0f, 4.0f);
+        float y = Random.Range(-4.0f, 2.0f);
 
         transform.position = new Vector3(x, y, 0);
-        Invoke("DestroyInvoke", 10.0f);
+        Invoke("DestroyInvoke", 6.0f);
     }
     void DestroyInvoke()
     {
