@@ -58,6 +58,13 @@ public class GameManager : MonoBehaviour
         }
         // time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        timer += Time.deltaTime;
+        if (timer >= spawnInterval)
+        {
+            SpawnInk();
+            timer = 0f;
+        }
     }
     public void isMatched()
     {
@@ -102,5 +109,22 @@ public class GameManager : MonoBehaviour
 
         scoreTxt.text = score.ToString();
         stageTxt.text = stage.ToString();
+    }
+
+    public GameObject Ink;
+    public float spawnInterval = 1.0f; // 먹물 생성 간격
+    public Vector2 spawnAreaMin = new Vector2(-5, -5); // 스폰 영역 최소값
+    public Vector2 spawnAreaMax = new Vector2(5, 5);
+
+    private float timer;
+
+    void SpawnInk()
+    {
+        Vector2 randomPos = new Vector2(
+            Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+            Random.Range(spawnAreaMin.y, spawnAreaMax.y)
+        );
+
+        Instantiate(Ink, randomPos, Quaternion.identity);
     }
 }
