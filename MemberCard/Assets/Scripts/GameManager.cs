@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,18 +15,13 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public Text scoreTxt;
     public Text stageTxt;
+
     public GameObject endPanel;
     public GameObject clearPanel;
+    //public GameObject hiddenPanel;
 
-    float time = 0.0f;
+    float time = 60.0f;
     int score = 0;
-    public int stage = 1;
-
-    public GameManager(int stage)
-    {
-        this.stage = stage;
-    }
-
     bool time20 = true;
 
     public int cardCount = 0;
@@ -43,27 +39,37 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+
+        // TestDebug
+        // Debug.Log($"clearStage : {PlayerPrefs.GetInt("stageClear")}");
     }
     void Update()
     {
-        // 시간 제한
-        if (time > 30.0f)
+        GameStart();
+    }
+
+    public void GameStart()
+    {
+        if (time < 0.0f)
         {
-            time = 30.0f;
+            time = 0.0f;
             Gameover();
             ShowEndUI();
         }
-        else if(time > 20.0f && time20)
+        else if (time < 20.0f && time20)
         {
             AudioManager.instance.timeOutSound();
             time20 = false;
         }
         else
         {
-            time += Time.deltaTime;
+            time -= Time.deltaTime;
         }
-        // time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+    }
+    public void Gameover()
+    {
+        Time.timeScale = 0f;
     }
     public void isMatched()
     {
@@ -71,42 +77,55 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(matchClip);
 
-            // idx가 일치하면 destroyCard
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            // Board에서 arr[i]값 받아오기
+
             cardCount -= 2;
             score++;
 
-            if(cardCount == 0) // 모두 맞추면 게임 종료
+            if(cardCount == 0) // Gameclear
             {
-                AudioManager.instance.BGMSound();
+                PlayerSaveData();
+                // TestDebug
+                // Debug.Log($"clearStage : {PlayerPrefs.GetInt("stageClear")}");
+
+                // ShowNextStageUI();
                 Gameover();
-                clearPanel.SetActive(true);
-                //ShowEndUI();
+                ShowClearUI();
             }
         }
         else
         {
             audioSource.PlayOneShot(notMatchClip);
-            // idx가 일치 하지 않으면 closeCard
+
             firstCard.CloseCard();
             secondCard.CloseCard();
         }
         firstCard = null;
         secondCard = null;
     }
-
-    public void Gameover()
-    {
-        Time.timeScale = 0f;
-    }
-
     public void ShowEndUI()
     {
         endPanel.SetActive(true);
 
         scoreTxt.text = score.ToString();
-        stageTxt.text = stage.ToString();
+        stageTxt.text = PlayerPrefs.GetInt("stageClear").ToString();
+    }
+    public void ShowClearUI()
+    {
+        clearPanel.SetActive(true);
+    }
+    //public void ShowHiddenUI()
+    //{
+    //    hiddenPanel.SetActive(true);
+    //}
+    public void PlayerSaveData()
+    {
+        int previous = PlayerPrefs.GetInt("stageClear", 1);
+        int nextStage = previous + 1;
+
+        PlayerPrefs.SetInt("stageClear", nextStage);
+        PlayerPrefs.Save();
+        Debug.Log($"스테이지 저장 : {nextStage}");
     }
 }
