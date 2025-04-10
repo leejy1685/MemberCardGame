@@ -11,15 +11,7 @@
 - 한 사람 당 본인을 대표할 수 있는 이미지를 필요한 만큼 준비해주세요.
 - 모든 카드 매칭 성공 시, 팀원들의 이름 및 사진 한 눈에 보여주기 / 실패 시 실패를 알리는 문구 노출
 - 추가 기능 구현을 살펴보고 게임에 여러 요소를 더하여 우리만의 게임을 제작해봅시다.
-    
-<details>
-<summary> 역할 분담 </summary>
 
-1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
-2. 한예준 : Card (랜덤 이미지 삽입)
-3. 최홍진 : UI (시간 측정, 게임 종료 UI)
-4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
-5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
 
 </details>
 
@@ -30,7 +22,16 @@
 
 </details>
 
+<details>
+<summary> 역할 분담 </summary>
 
+1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
+2. 한예준 : Card (랜덤 이미지 삽입)
+3. 최홍진 : UI (시간 측정, 게임 종료 UI)
+4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
+5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
+
+</details>
 
 
 # 추가 구현 기능 제작
@@ -44,6 +45,20 @@
 - 기존 클리어 UI → 히든 스테이지 클리어 UI로 변경
 - 게임 연출 추가
 - 각종 행동에 사운드 삽입
+
+
+</details>
+
+<details>
+<summary>추가 구현 기능 와이어프레임</summary>
+
+![image (1)](https://github.com/user-attachments/assets/9bce4bca-68ec-476e-b479-f991524d396f)
+
+[FigJam 링크](https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0)
+
+</details>
+
+
 <details>
 <summary> 역할 분담 </summary>
 
@@ -88,19 +103,6 @@
 
 <img src="https://github.com/user-attachments/assets/340bbaad-f7ce-45d5-baaf-ebd15f95d30c" width="200" />
 
-
-</details>
-
-
-
-</details>
-
-<details>
-<summary>추가 구현 기능 와이어프레임</summary>
-
-![image (1)](https://github.com/user-attachments/assets/9bce4bca-68ec-476e-b479-f991524d396f)
-
-[FigJam 링크](https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0)
 
 </details>
 
