@@ -26,47 +26,40 @@
 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
 <details>
 <summary> 작업물 </summary>
-StageManager.cs
 ```csharp
-int stage;
-
-    public GameObject stage2;
-    public GameObject stage3;
-    public GameObject hiddenStage;
+    AudioSource audioSource;  // 오디오 소스를 담을 변수. 버튼 클릭 시 소리를 재생하기 위해 사용.
+    public AudioClip clip;    // 버튼 클릭 시 재생될 오디오 클립을 저장할 변수.
 
     private void Start()
     {
-    	AudioManager.instance.BGMSound();
-
-        stage = PlayerPrefs.GetInt("stageClear");
-
-        if(stage >= 2)
-        {
-            stage2.SetActive(true);
-        }
-        if(stage >= 3)
-        {
-            stage3.SetActive(true);
-        }
-        if(stage >= 4)
-        {
-            hiddenStage.SetActive(true);
-        }
+        audioSource = GetComponent<AudioSource>();
     }
 
-```
-StageScene의 UI를 관리하기 위한 코드이다. PlayerPrefs에 저장된 나의 스테이지 클리어 기록을 가져와서 입장 가능한 stage를 표시한다.
-BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운드가 변경되지 않기 때문이다.
-
-```csharp
-
-    void Start()
+    // 게임 시작 버튼 클릭 시 호출되는 메소드
+    public void StartGame()
     {
-        PlayerPrefs.SetInt("stageClear",1);   //test Code
+        Time.timeScale = 1.0f;  // 게임 시간을 정상 흐름으로 설정. 일시정지 상태를 해제하는 역할.
+        audioSource.PlayOneShot(clip);  // 버튼 클릭 시 설정된 오디오 클립을 한 번 재생.
+        AudioManager.instance.BGMSound();  // 오디오 매니저를 통해 배경 음악을 시작.
+        Invoke("StartGameInvoke", 0.5f); 
+    }
+
+    // 리셋 버튼 클릭 시 호출되는 메소드
+    public void resetButton()
+    {   
+        Time.timeScale = 1.0f;  // 게임 시간을 정상 흐름으로 설정, 일시정지 상태 해제.
+        AudioManager.instance.BGMSound();  // 오디오 매니저를 통해 배경 음악을 시작.
+        SceneManager.LoadScene("StartScene");  // 스타트 씬으로 전환, 게임을 초기 상태로 리셋.
+    }
+
+    // 0.5초 후에 호출되는 메소드
+    void StartGameInvoke()
+    {
+        SceneManager.LoadScene("MainScene");  // 메인 씬으로 전환
     }
 
 ```
-게임의 클리어 기록을 초기화하기 위한 코드이다. StartScene에 있는 ResetCode 오브젝트를 활성화하고 실행하면 클리어 기록이 초기화 된다.
+오디오까지 고려하여 미리준비
 
 </details>
 
@@ -75,9 +68,76 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 <summary> 작업물 </summary>
 
 ```csharp
+    public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
+    public GameObject front;  // 카드의 앞면(GameObject)
+    public GameObject back;   // 카드의 뒷면(GameObject)
+    public Animator anim;  // 카드 애니메이션을 제어하는 Animator
 
-코드
+    AudioSource audioSource;  // 카드 클릭 시 소리를 재생할 AudioSource
+    public AudioClip clip;    // 카드 클릭 시 재생될 오디오 클립(Flip Sound)
 
+    // 초기화 작업을 수행하는 Start() 메소드
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();  // 게임 오브젝트에 부착된 AudioSource 컴포넌트를 가져와 audioSource 변수에 저장
+    }
+
+    // 카드를 열 때 호출되는 메소드
+    public void OpenCard()
+    {
+        audioSource.PlayOneShot(clip);  // 카드가 열릴 때 소리를 한 번 재생
+
+        anim.SetBool("isOpen", true);  // 카드 애니메이션에서 "isOpen" 파라미터를 true로 설정하여 카드를 여는 애니메이션을 실행
+        front.SetActive(true);  // 카드의 앞면을 활성화
+        back.SetActive(false);  // 카드의 뒷면을 비활성화
+
+        // 첫 번째 카드가 아직 선택되지 않았다면 첫 번째 카드로 설정
+        if (GameManager.Instance.firstCard == null)
+        {
+            GameManager.Instance.firstCard = this;
+        }
+        else
+        {
+            // 두 번째 카드가 선택되었을 때
+            GameManager.Instance.secondCard = this;
+            GameManager.Instance.isMatched();  // 카드가 맞는지 검사
+        }
+    }
+
+    // 카드를 삭제할 때 호출되는 메소드
+    public void DestroyCard()
+    {
+        Invoke("DestoryCardInvoke", 1.0f);  // 1초 후 DestoryCardInvoke 메소드를 호출하여 카드를 삭제
+    }
+
+    // 카드 삭제 함수
+    void DestoryCardInvoke()
+    {
+        Destroy(gameObject);  // 게임 오브젝트(카드)를 삭제
+    }
+
+    // 카드를 닫을 때 호출되는 메소드
+    public void CloseCard()
+    {
+        Invoke("CloseCardInvoke", 1.0f);  // 1초 후 CloseCardInvoke 메소드를 호출하여 카드를 닫음
+    }
+
+    // 카드 닫기 함수
+    void CloseCardInvoke()
+    {
+        anim.SetBool("isOpen", false);  // 카드 애니메이션에서 "isOpen" 파라미터를 false로 설정하여 카드를 닫는 애니메이션 실행
+        front.SetActive(false);  // 카드의 앞면을 비활성화
+        back.SetActive(true);    // 카드의 뒷면을 활성화
+    }
+
+    public SpriteRenderer frontImage;  // 카드의 앞면 이미지를 표시하는 SpriteRenderer
+
+    // 카드의 이미지를 설정하는 함수
+    public void setting(int number)
+    {
+        idx = number;  // 카드의 고유 번호를 설정
+        frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");  // Resources 폴더에서 해당 카드 이미지를 로드하여 frontImage에 적용
+    }
 ```
 </details>
 
@@ -98,15 +158,146 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 <summary> 작업물 </summary>
 
 ```csharp
+public static GameManager Instance;
 
-코드
+public Card firstCard;
+public Card secondCard;
+
+public Text timeTxt;
+public Text scoreTxt;
+public Text stageTxt;
+public GameObject endPanel;
+public GameObject clearPanel;
+
+float time = 0.0f;
+int score = 0;
+int stage = 1;
+bool time20 = true;
+
+public int cardCount = 0;
+
+AudioSource audioSource;
+public AudioClip matchClip; //match sound
+public AudioClip notMatchClip;  //not match sound
+
+void Awake()
+{
+    if (Instance == null)
+        Instance = this;
+}
+void Start()
+{
+    Time.timeScale = 1.0f;
+    audioSource = GetComponent<AudioSource>();
+}
+void Update()
+{
+    // 시간 제한
+    if (time > 30.0f)
+    {
+        time = 30.0f;
+        Gameover();
+        ShowEndUI();
+    }
+    else if(time > 20.0f && time20)
+    {
+        AudioManager.instance.timeOutSound();
+        time20 = false;
+    }
+    else
+    {
+        time += Time.deltaTime;
+    }
+    // time += Time.deltaTime;
+    timeTxt.text = time.ToString("N2");
+}
+public void isMatched()
+{
+    if (firstCard.idx == secondCard.idx)
+    {
+        audioSource.PlayOneShot(matchClip);
+
+        // idx가 일치하면 destroyCard
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
+        // Board에서 arr[i]값 받아오기
+        cardCount -= 2;
+        score++;
+
+        if(cardCount == 0) // 모두 맞추면 게임 종료
+        {
+            AudioManager.instance.BGMSound();
+            Gameover();
+            clearPanel.SetActive(true);
+            //ShowEndUI();
+        }
+    }
+    else
+    {
+        audioSource.PlayOneShot(notMatchClip);
+        // idx가 일치 하지 않으면 closeCard
+        firstCard.CloseCard();
+        secondCard.CloseCard();
+    }
+    firstCard = null;
+    secondCard = null;
+}
+
+public void Gameover()
+{
+    Time.timeScale = 0f;
+}
+
+public void ShowEndUI()
+{
+    endPanel.SetActive(true);
+
+    scoreTxt.text = score.ToString();
+    stageTxt.text = stage.ToString();
+}
 
 ```
 </details>
 
 5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
 
+<details>
+<summary> 작업물 </summary>
 
+```csharp
+    public Transform Cards;  // 카드들을 배치할 부모 트랜스폼
+    public GameObject card;  // 카드 프리팹(GameObject)
+
+    // Start() 메소드: 게임 시작 시 카드들을 생성하는 함수
+    void Start()
+    {
+        // 카드에 할당될 번호 배열 (0~9까지의 숫자 두 개씩 포함)
+        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
+        
+        // 배열을 무작위로 섞음 (랜덤 번호 배치를 위해)
+        arr = arr.OrderBy(x => Random.Range(0f, 9f)).ToArray();
+
+        // 카드 20개 생성 (배열 크기만큼)
+        for (int i = 0; i < 20; i++)
+        {
+            // 카드 프리팹을 인스턴스화하여 게임 오브젝트로 생성
+            GameObject go = Instantiate(card, this.transform);
+
+            // 카드의 위치를 계산하여 배치 (2D 좌표로 배치)
+            float x = (i % 4) * 1.2f - 1.8f;  // x 좌표 계산 (4열로 배치)
+            float y = (i / 4) * 1.2f - 3.9f;  // y 좌표 계산 (5행으로 배치)
+            go.transform.position = new Vector2(x, y);  // 계산된 위치에 카드 배치
+
+            // 각 카드에 번호를 설정
+            go.GetComponent<Card>().setting(arr[i]);
+        }
+
+        // GameManager의 cardCount 변수에 생성된 카드 수 할당
+        GameManager.Instance.cardCount = arr.Length;
+    }
+
+```
+</details>
 
 
 
@@ -215,9 +406,55 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
     
 버튼 매니저 추가 (이준영)
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
+<details>
+<summary> 작업물1 </summary>
+StageManager.cs
+```csharp
+int stage;
+
+    public GameObject stage2;
+    public GameObject stage3;
+    public GameObject hiddenStage;
+
+    private void Start()
+    {
+    	AudioManager.instance.BGMSound();
+
+        stage = PlayerPrefs.GetInt("stageClear");
+
+        if(stage >= 2)
+        {
+            stage2.SetActive(true);
+        }
+        if(stage >= 3)
+        {
+            stage3.SetActive(true);
+        }
+        if(stage >= 4)
+        {
+            hiddenStage.SetActive(true);
+        }
+    }
+
+```
+StageScene의 UI를 관리하기 위한 코드이다. PlayerPrefs에 저장된 나의 스테이지 클리어 기록을 가져와서 입장 가능한 stage를 표시한다.
+BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운드가 변경되지 않기 때문이다.
+
+```csharp
+
+    void Start()
+    {
+        PlayerPrefs.SetInt("stageClear",1);   //test Code
+    }
+
+```
+게임의 클리어 기록을 초기화하기 위한 코드이다. StartScene에 있는 ResetCode 오브젝트를 활성화하고 실행하면 클리어 기록이 초기화 된다.
+
+</details>
+
 
 <details>
-<summary> 작업물 </summary>
+<summary> 작업물2 </summary>
 
 Button.cs
 ```csharp
