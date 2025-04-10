@@ -21,21 +21,21 @@ public class Card : MonoBehaviour
         back.SetActive(true);
     }
 
-    public void OpenCard()
+    public void OpenCard()//play animation when the card is clicked
     {
-        anim.SetTrigger("flip");//카드가 열리는 애니메이션 재생, 카드 열기
+        anim.SetTrigger("flip");
 
         if (clip != null)
             audioSource.PlayOneShot(clip);
 
         if (GameManager.Instance.firstCard == null)
         {
-            GameManager.Instance.firstCard = this;//첫번째 카드 저장
+            GameManager.Instance.firstCard = this;//saving first card
         }
         else
         {
-            GameManager.Instance.secondCard = this;//두번째 카드 저장
-            GameManager.Instance.isMatched();//isMatched() 함수 호출
+            GameManager.Instance.secondCard = this;//saving second card
+            GameManager.Instance.isMatched();//define function to check if the cards are matched
         }
     }
     public void CloseCard()
@@ -47,7 +47,7 @@ public class Card : MonoBehaviour
     {
         anim.SetTrigger("flipback");
     }
-    //0.5초 동안 카드가 다시 뒤집히는 애니메이션 재생, 카드 뒤집기
+    //Play animation when the card is not matched
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 0.5f);
@@ -58,24 +58,24 @@ public class Card : MonoBehaviour
         anim.SetTrigger("Destroy");
         Destroy(this.gameObject, 0.3f);
     }
-    //카드가 파괴되는 애니메이션 호출 후 0.3초 후에 카드 파괴
+    //Destroy card after 0.3 seconds when the card is matched
     public void SwitchToFront()
     {
         front.SetActive(true);
         back.SetActive(false);
     }
-
+    //Functions to switch between front and back of the card(insert to 'flip' animation)
     public void SwitchToBack()
     {
         front.SetActive(false);
         back.SetActive(true);
     }
-    //애니메이션 이벤트 함수
+    //Funtions to switch between front and back of the card(insert to 'flipback' animation)
     public void setting(int number)
     {
         idx = number;
         frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");
     }
-    //앞면 이미지 리소스에서 가져오기
+    //Get the card number and load the image
 }
 
