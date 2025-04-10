@@ -11,8 +11,8 @@ public class StageManager : MonoBehaviour
     public GameObject hiddenStage;
 
     private void Start()
-    { 
-
+    {
+        Time.timeScale = 1.0f;
         stage = PlayerPrefs.GetInt("stageClear");
 
         if(stage >= 2)

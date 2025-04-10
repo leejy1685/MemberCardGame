@@ -17,28 +17,28 @@ public class Button : MonoBehaviour
     {
         //for GameManager and Board 
         PlayerPrefs.SetInt("stage", 1);
-
+        Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);    //interbal
     }    
     public void StartStage2()
     {
         PlayerPrefs.SetInt("stage", 2);
-
+        Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }    
     public void StartStage3()
     {
         PlayerPrefs.SetInt("stage", 3);
-
+        Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }    
     public void StartStageHidden()
     {
         PlayerPrefs.SetInt("stage", 4);
-
+        Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
     }
