@@ -149,6 +149,7 @@ C#스크립트
 <details>
 <summary>게임진행</summary>
 
+<img src="https://github.com/user-attachments/assets/76097dcb-51bd-4d67-8076-c4cd086bacb4" width="300" />
 
 
 </details>
