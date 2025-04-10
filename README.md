@@ -19,11 +19,9 @@
 </details>
 
 <details>
-<summary> 필수 구현 기능 와이어 프레임 </summary>
-    
-    ![image](https://github.com/user-attachments/assets/add5a3ef-adea-45f1-92ae-e550df637090)
-    ![image](https://github.com/user-attachments/assets/40e1e6fe-ca5a-437f-b8f0-c710dc20ad9b)
+<summary>필수 구현 기능 와이어프레임</summary>
 
+![image](https://github.com/user-attachments/assets/a8869c53-8fb4-42c1-820a-92e9af98c90b)
 
 </details>
 
