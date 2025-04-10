@@ -102,12 +102,34 @@
 
 <details>
 <summary> 프리팹 </summary>
-
 <img src="https://github.com/user-attachments/assets/340bbaad-f7ce-45d5-baaf-ebd15f95d30c" width="200" />
+
+C#스크립트
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ink : MonoBehaviour
+    {
+        void Start()
+        {
+            float x = Random.Range(-2.0f, 2.0f);
+            float y = Random.Range(-4.0f, 2.0f);
+    
+            transform.position = new Vector3(x, y, 0);
+            Invoke("DestroyInvoke", 6.0f);
+        }
+        void DestroyInvoke()
+        {
+            Destroy(gameObject);
+        }
+    
+    }
+
 
 </details>
 
-
+</details>
 
 
 
