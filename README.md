@@ -137,7 +137,7 @@
     public void setting(int number)
     {
         idx = number;  // 카드의 고유 번호를 설정
-        frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");  // Resources 폴더에서 해당 카드 이미지를 로드하여 frontImage에 적용
+        frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");  // Resources 폴더에서 해당 카드 이미지를 로드하여 적용
     }
 ```
 </details>
@@ -201,11 +201,6 @@
             time = 30.0f;  // 시간을 30초로 제한
             Gameover();  // 게임 오버 호출
             ShowEndUI();  // 게임 종료 UI 표시
-        }
-        else if(time > 20.0f && time20)  // 시간이 20초를 넘기면 한 번만 알림
-        {
-            AudioManager.instance.timeOutSound();  // 시간이 20초가 넘어가면 경고음 재생
-            time20 = false;  // 경고음을 한 번만 재생하도록 설정
         }
         else
         {
@@ -354,29 +349,69 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary> 역할 분담 </summary>
 
 ## 1. 게임에 필요한 매니저 추가 작성
 게임 매니저 추가기능 작성 (송치웅)
 - 난이도 시스템 추가 (정보 값을 저장하여 다른 씬으로 전달)
+
+
+
+
 - 각 스테이지에 60초 시간 제한 추가
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+    public void GameStart()
+    {
+        if (time < 0.0f) // time == 0s -> Timeover
+        {
+            time = 0.0f;
+            Timeover();
+            ShowEndUI();
+        }
+        else if (time < 20.0f && time20) // time < 20s -> AddSound
+        {
+            AudioManager.instance.timeOutSound();
+            time20 = false;
+        }
+        else // time != 0 -> time Decrement
+        {
+            time -= Time.deltaTime;
+        }
+        timeTxt.text = time.ToString("N2");
+    }
+
+```
+</details>
+
+
+
 - 게임 오버 시 점수와 스테이지 표기 추가
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 버튼 매니저 추가 (이준영)
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
@@ -440,23 +475,23 @@
     public void retryButton()
     {
         PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());  // 현재 스테이지 저장
-        SceneManager.LoadScene("MainScene");  // "MainScene" 씬으로 로드
+        SceneManager.LoadScene("MainScene");  // 메인 씬으로 로드
     }
 
     // 메뉴를 눌렀을 때, 스테이지 씬으로 넘어가는 메소드
     public void stageButton()
     {
-        SceneManager.LoadScene("StageScene");  // "StageScene" 씬으로 로드
+        SceneManager.LoadScene("StageScene");  // 스테이지 씬으로 로드
     }
 
     // 게임 시작 소리 후, MainScene으로 넘어가는 메소드
     void StartGameInvoke()
     {
-        SceneManager.LoadScene("MainScene");  // "MainScene" 씬으로 로드
+        SceneManager.LoadScene("MainScene");  // 메인 씬으로 로드
     }
 
 ```
-Button.cs는 Button을 관리하기 위해서 만든 스크립트이다. StartStage는 GameManager에게 현재 스테이지 정보를 넘기는 역할도 하고 있다.
+StartStage는 GameManager에게 현재 스테이지 정보를 넘기는 역할도 하고 있다.
 Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 하기 때문에 ButtonManager라는 오브젝트를 만들어서 관리하였다.
 
 </details>
@@ -469,53 +504,49 @@ Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 
 <summary> 작업물 </summary>
 AudioManager.cs
 ```csharp
-//Singleton
-    public static AudioManager instance;
+        public static AudioManager instance;
     
-    AudioSource audioSource;
-    public AudioClip BGMClip;  //BGM
-    public AudioClip timeOutClip;   //timeOut
-    public AudioClip hurryUpSound;  //hurry up
+    AudioSource audioSource;  // 오디오 소스 컴포넌트
+    public AudioClip BGMClip;  // BGM (배경 음악)
+    public AudioClip timeOutClip;  // 타임아웃 사운드
+    public AudioClip hurryUpSound;  // 급할 때 사운드
 
+    // 오디오 매니저 인스턴스를 싱글톤으로 관리하는 Awake
     private void Awake()
     {
         if(instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            instance = this;  // 인스턴스를 현재 객체로 설정
+            DontDestroyOnLoad(gameObject);  // 씬 전환 시에도 이 객체를 삭제하지 않도록 설정
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject);  // 이미 인스턴스가 존재하면 중복 객체를 삭제
         }
-
     }
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        BGMSound();
+        audioSource = GetComponent<AudioSource>();  // AudioSource 컴포넌트 가져오기
+        BGMSound();  // 게임 시작 시 배경 음악을 재생
     }
 
+    // 타임아웃 사운드
     public void timeOutSound()
     {
-        audioSource.PlayOneShot(hurryUpSound);  //one play
-        audioSource.clip = timeOutClip;
-        audioSource.Play(); //loop play
+        audioSource.PlayOneShot(hurryUpSound);  // hurryUpSound를 한 번 재생
+        audioSource.clip = timeOutClip;  // 타임아웃 사운드로 변경
+        audioSource.Play();  // 타임아웃 사운드는 반복해서 재생
     }
 
+    // 배경 음악
     public void BGMSound()
     {
-        audioSource.clip = BGMClip;
-        audioSource.Play(); //loop play
+        audioSource.clip = BGMClip;  // 배경 음악을 설정
+        audioSource.Play();  // 배경 음악을 반복 재생
     }
 
-
 ```
-AudioManager.cs는 주로 BGM을 다루는 스크립트이다. 게임 시작 시에는 BGM이 나오지만 게임 플레이 중 20초 이내로 가게 되면 hurry up 사운드와 함께 째깍째깍하는 소리로 바뀌게하기 위해서 timeOutSound()함수를 만들었다.
-AudioManager 오브젝트에는 AudioSource 컴포넌트의 loop를 true값으로 바꿔줘야 소리가 정상 작동 할 수 있다. 만약 이와 다른 방법으로 하고 싶다면 Start()함수에서 audioSource.loop = true; 를 추가하면 된다.
-
 </details>
 
     
@@ -538,8 +569,42 @@ AudioManager 오브젝트에는 AudioSource 컴포넌트의 loop를 true값으�
 ## 4.히든 스테이지 구현하기
 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
 - 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
+<details>
+<summary> 작업물 </summary>
 
+```csharp
+public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만족시 나오는 버튼
+    public GameObject ink;	//히든 스테이지 시 생성되는 오브젝트
+    //스테이지 클리어 마다 나오는 판넬이 다르기 때문에 배열로 구현
+    public GameObject[] stageClearPanel = new GameObject[4];
+	
+    private void ShowClearUI()
+    {
+        if(stage == 3 && time <= 20) //히든 스테이지 조건 스테이지3 클리어 & 20초 이상 클리어
+        {	//히든 스테이지 오픈 조건에 맞으면 히든 스테이지로 바로 입장하는 버튼 생성
+            hiddenStageStart.SetActive(false);
+        }
+        //배열로 구현된 클리어 판넬 
+        stageClearPanel[stage-1].SetActive(true);
+    }
     
+    void Start()
+    {
+    	... 중략 ...
+    	
+        if(stage == 4)  //hidden stage
+        {	//1.5초 마다 잉크 생성
+            InvokeRepeating("MakeInk", 0.0f, 1.5f);
+        }
+    }
+    
+    void MakeInk()	//잉크 생성
+    {
+        Instantiate(ink);
+    }
+```
+</details>
+
 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
 - 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
 <details>
