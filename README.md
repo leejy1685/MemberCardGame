@@ -273,10 +273,12 @@ Button.cs는 Button을 관리하기 위해서 만든 스크립트이다. StartSt
 
 Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 하기 때문에 ButtonManager라는 오브젝트를 만들어서 관리하였다.
 </details>
-    
+
 사운드 매니저 추가 (이준영)
 - 카드를 클릭하거나 뒤집을 때, 게임이 시작될 때, 진행 중 성공 또는 실패 시 효과음을 삽입
 - 타이머 시간이 촉박할 때, 게이머에게 경고하는 배경 음악으로 변경
+
+<details>
 <summary> 작업물 </summary>
 AudioManager.cs
 ```csharp
@@ -485,7 +487,6 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 ```
 다음 기능은 스테이지 관리 기능이다. 플레이어 프리펩으로 스테이지를 관리하였다.
 stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 가능한 스테이지를 말한다.
-
 
 </details>
 
