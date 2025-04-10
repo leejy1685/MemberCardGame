@@ -27,6 +27,8 @@
 <details>
 <summary> 작업물 </summary>
 
+Button.cs
+
 ```csharp
     AudioSource audioSource;  // 오디오 소스를 담을 변수. 버튼 클릭 시 소리를 재생하기 위해 사용.
     public AudioClip clip;    // 버튼 클릭 시 재생될 오디오 클립을 저장할 변수.
@@ -42,7 +44,7 @@
         Time.timeScale = 1.0f;  // 게임 시간을 정상 흐름으로 설정. 일시정지 상태를 해제하는 역할.
         audioSource.PlayOneShot(clip);  // 버튼 클릭 시 설정된 오디오 클립을 한 번 재생.
         AudioManager.instance.BGMSound();  // 오디오 매니저를 통해 배경 음악을 시작.
-        Invoke("StartGameInvoke", 0.5f); 
+        Invoke("StartGameInvoke", 0.5f); //오디오 클립 재생이 끝날 때 까지 씬 0.5초 간격 만들기
     }
 
     // 리셋 버튼 클릭 시 호출
@@ -67,6 +69,8 @@
 
 <details>
 <summary> 작업물 </summary>
+
+Card.cs
 
 ```csharp
     public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
@@ -155,6 +159,8 @@
 ### 4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
 <details>
 <summary> 작업물 </summary>
+
+GameManager.cs
 
 ```csharp
  public static GameManager Instance;  // 싱글톤 패턴을 적용하여 다른 스크립트에서 접근할 수 있는 인스턴스
@@ -263,6 +269,8 @@
 <details>
 <summary> 작업물 </summary>
 
+Board.cs
+
 ```csharp
     public Transform Cards;
     public GameObject card;
@@ -332,6 +340,8 @@
 <details>
 <summary> 작업물 </summary>
 
+GameManager.cs
+
 ```csharp
     // 패배조건을 30초에서 60->0초로 변경
     if (time < 0.0f) // time == 0s -> Timeover
@@ -361,6 +371,8 @@
 <details>
 <summary> 작업물 </summary>
 
+GameManager.cs
+
 ```csharp
     // 게임 종료 UI
     public void ShowEndUI()
@@ -379,22 +391,11 @@
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
 <summary> 작업물1 </summary>
+
+Button.cs
+
 ```csharp
-   int stage;  // 현재 플레이어가 클리어한 스테이지 정보
 
-    public GameObject stage2;  // 스테이지2 버튼
-    public GameObject stage3;  // 스테이지3 버튼
-    public GameObject hiddenStage;  // 히든 스테이지 버튼
-
-    private void Start()
-    {
-        AudioManager.instance.BGMSound();
-
-        // PlayerPrefs를 사용하여 이전에 저장된 스테이지 클리어 정보 불러오기기
-        // 만약 값이 없으면 기본값 0을 반환합니다.
-        stage = PlayerPrefs.GetInt("stageClear");
-        // 스테이지 값에 따라 각 스테이지의 오브젝트를 활성화합니다.
-        if지1
     public void StartStage1()
     {
         // GameManager에게 1스테이지로 갈 것임을 알리기 위해 PlayerPrefs에 저장
@@ -436,11 +437,11 @@
     // 리셋
     public void retryButton()
     {
-        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());  // 현재 스테이지 저장
+        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());  // 현재 스테이지로 간다고 알려주기
         SceneManager.LoadScene("MainScene");  // 메인 씬으로 로드
     }
 
-    // 메뉴를 눌렀을 때, 스테이지 씬으로 넘어가는 메소드
+    // Main를 눌렀을 때, 스테이지 씬으로 넘어가는 메소드
     public void stageButton()
     {
         SceneManager.LoadScene("StageScene");  // 스테이지 씬으로 로드
@@ -464,8 +465,11 @@ Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 
 
 <details>
 <summary> 작업물 </summary>
+	
 AudioManager.cs
+	
 ```csharp
+	
     public static AudioManager instance;
     
     AudioSource audioSource;  // 오디오 소스 컴포넌트
@@ -518,6 +522,8 @@ AudioManager.cs
 
 <details>
 <summary> 작업물 </summary>
+
+Card.cs
 
 ```csharp
 public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
@@ -601,13 +607,16 @@ public void setting(int number)
 ## 3. 스테이지 or 난이도 추가하기
 ### 카드의 개수가 늘어난 더 어려운 스테이지 구현(윤지민)
 - 난이도 변수를 가져와 1줄씩 추가
-- 1스테이지: 12장 (3×4) 이준영님 사진추가
-- 2스테이지: 16장 (4×4) 한예준님, 윤지민님 사진추가
-- 3스테이지: 20장 (5×4) 최홍진님, 송치웅님 사진추가
+- 1스테이지: 12장 (3×4) 
+- 2스테이지: 16장 (4×4) 
+- 3스테이지: 20장 (5×4) 
 <details>
 <summary> 작업물 </summary>
 
+Board.cs
+
 ```csharp
+
 int currentStage = GameManager.Instance.getStage();  // 현재 스테이지 번호를 게임메니저에서 가져옴
 
 // 스테이지1 카드 12개 배치
@@ -685,45 +694,47 @@ else if (currentStage >= 3)
 
 ## 4.히든 스테이지 구현하기
 ### 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
-- 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
 <details>
 <summary> 작업물 </summary>
 
+
+
 ```csharp
-public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만족시 나오는 버튼
-    public GameObject ink;	//히든 스테이지 시 생성되는 오브젝트
-    //스테이지 클리어 마다 나오는 판넬이 다르기 때문에 배열로 구현
-    public GameObject[] stageClearPanel = new GameObject[4];
+
+	public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만족시 나오는 버튼
+    	public GameObject ink;	//히든 스테이지 시 생성되는 오브젝트
+    	//스테이지 클리어 마다 나오는 판넬이 다르기 때문에 배열로 구현
+    	public GameObject[] stageClearPanel = new GameObject[4];
 	
-    private void ShowClearUI()
-    {
-        if(stage == 3 && time <= 20) //히든 스테이지 조건 스테이지3 클리어 & 20초 이상 클리어
-        {	//히든 스테이지 오픈 조건에 맞으면 히든 스테이지로 바로 입장하는 버튼 생성
-            hiddenStageStart.SetActive(false);
-        }
-        //배열로 구현된 클리어 판넬 
-        stageClearPanel[stage-1].SetActive(true);
-    }
+    	private void ShowClearUI()
+    	{
+        	if(stage == 3 && time <= 20) //히든 스테이지 조건 스테이지3 클리어 & 20초 이상 클리어
+        	{	//히든 스테이지 오픈 조건에 맞으면 히든 스테이지로 바로 입장하는 버튼 생성
+            	hiddenStageStart.SetActive(false);
+        	}
+        	//배열로 구현된 클리어 판넬 
+        	stageClearPanel[stage-1].SetActive(true);
+    	}
     
-    void Start()
-    {
-    	... 중략 ...
+    	void Start()
+    	{
+    		... 중략 ...
     	
-        if(stage == 4)  //hidden stage
-        {	//1.5초 마다 잉크 생성
-            InvokeRepeating("MakeInk", 0.0f, 1.5f);
-        }
-    }
+        	if(stage == 4)  //hidden stage
+        	{	//1.5초 마다 잉크 생성
+            	InvokeRepeating("MakeInk", 0.0f, 1.5f);
+        	}
+    	}
     
-    void MakeInk()	//잉크 생성
-    {
-        Instantiate(ink);
-    }
+    	void MakeInk()	//잉크 생성
+    	{
+        	Instantiate(ink);
+    	}
 ```
 </details>
 
 ### 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
-- 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
+- 잉크(커지고 점점 사라지는 효과)프리팹 제작(최홍진)
 <details>
 <summary> 프리팹 </summary>
     
