@@ -172,7 +172,7 @@ C#스크립트
 <details>
 <summary> 히든 스테이지 </summary>
 
-<img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="300" />
+[![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
 
 </details>
 
