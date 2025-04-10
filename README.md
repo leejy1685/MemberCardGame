@@ -71,8 +71,37 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 </details>
 
 2. 한예준 : Card (랜덤 이미지 삽입)
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+
+코드
+
+```
+</details>
+
 3. 최홍진 : UI (시간 측정, 게임 종료 UI)
+<details>
+<summary> 작업물 </summary>
+와이어 프레임 기반으로 UI를 제작
+![image](https://github.com/user-attachments/assets/288e8270-247f-4d08-abc5-0459027883cb) ![image](https://github.com/user-attachments/assets/0ccec7a6-9bc0-48f5-a6ab-26d447d541ba)
+
+
+
+</details>
+
 4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+
+코드
+
+```
+</details>
+
 5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
 
 
