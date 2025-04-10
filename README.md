@@ -255,16 +255,6 @@
         Time.timeScale = 0f;  // 게임 시간을 멈춤 (시간 흐르지 않게)
     }
 
-    // 게임 종료 UI
-    public void ShowEndUI()
-    {
-        endPanel.SetActive(true);  // 게임 종료 패널 활성화
-
-        // 점수와 단계 정보를 UI에 표시
-        scoreTxt.text = score.ToString();
-        stageTxt.text = stage.ToString();
-    }
-
 ```
 싱글톤 처리하여 작업진행
 </details>
@@ -322,7 +312,6 @@
 - 게임 연출 추가
 - 각종 행동에 사운드 삽입
 
-
 </details>
 
 <details>
@@ -334,85 +323,58 @@
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary> 역할 분담 </summary>
 
 ## 1. 게임에 필요한 매니저 추가 작성
 게임 매니저 추가기능 작성 (송치웅)
-- 난이도 시스템 추가 (정보 값을 저장하여 다른 씬으로 전달)
-
-
-
-
 - 각 스테이지에 60초 시간 제한 추가
 <details>
 <summary> 작업물 </summary>
 
 ```csharp
-    public void GameStart()
+    // 패배조건을 30초에서 60->0초로 변경
+    if (time < 0.0f) // time == 0s -> Timeover
     {
-        if (time < 0.0f) // time == 0s -> Timeover
-        {
-            time = 0.0f;
-            Timeover();
-            ShowEndUI();
-        }
-        else if (time < 20.0f && time20) // time < 20s -> AddSound
-        {
-            AudioManager.instance.timeOutSound();
-            time20 = false;
-        }
-        else // time != 0 -> time Decrement
-        {
-            time -= Time.deltaTime;
-        }
-        timeTxt.text = time.ToString("N2");
+        time = 0.0f;  // 시간은 0으로 설정
+        Timeover();  // Timeover 메소드 호출
+        ShowEndUI();  // 게임 종료 UI를 표시
+    }
+    // 시간이 20초 미만
+    else if (time < 20.0f && time20)
+    {
+        AudioManager.instance.timeOutSound();  // 타임아웃 사운드 재생
+        time20 = false;  //사운드가 다시 재생되지 않도록 처리
+    }
+    // 시간 감소
+    else // time != 0 -> time Decrement
+    {
+        time -= Time.deltaTime;  // 매 프레임마다 시간 감소
+    }
+
+    // 현재 시간을 텍스트 형식으로 출력 (소수점 2자리까지 표시)
+    timeTxt.text = time.ToString("N2");
+
+```
+</details>
+- 게임 오버 시 점수와 스테이지 표기 추가
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+    // 게임 종료 UI
+    public void ShowEndUI()
+    {
+        endPanel.SetActive(true);  // 게임 종료 패널 활성화
+
+        // 점수와 스테이지지 정보를 UI에 표시
+        scoreTxt.text = score.ToString();
+        stageTxt.text = stage.ToString();
     }
 
 ```
 </details>
 
-
-
-- 게임 오버 시 점수와 스테이지 표기 추가
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 버튼 매니저 추가 (이준영)
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
@@ -548,13 +510,48 @@ AudioManager.cs
 
 ```
 </details>
-
     
 ## 2. 게임에 연출 (한예준)
 카드가 뒤집어지는 모습을 애니메이션으로 추가
 - 카드를 클릭했을 때 애니메이션으로 Y축을 180도 회전
 - 두 카드의 사진이 서로 같을 시 회전하며 소멸하는 애니메이션 추가
 - 두 카드의 사진이 서로 다를 시
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+
+코드
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 ## 3. 스테이지 or 난이도 추가하기
 카드의 개수가 늘어난 더 어려운 스테이지 구현(윤지민)
@@ -562,9 +559,60 @@ AudioManager.cs
 - 1스테이지: 12장 (3×4) 이준영님 사진추가
 - 2스테이지: 16장 (4×4) 한예준님, 윤지민님 사진추가
 - 3스테이지: 20장 (5×4) 최홍진님, 송치웅님 사진추가
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+
+코드
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
     
 스테이지 선택, 구분 가능한 화면 제작 (최홍진)
 - 와이어 프레임 기반으로 UI제작
+<details>
+<summary> 작업물 </summary>
+
+```csharp
+
+코드
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 ## 4.히든 스테이지 구현하기
 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
@@ -606,18 +654,12 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 </details>
 
 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
-- 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
+- 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)(이준영)
 <details>
 <summary> 프리팹 </summary>
     
 <img src="https://github.com/user-attachments/assets/340bbaad-f7ce-45d5-baaf-ebd15f95d30c" width="200" />
 
-</details>
-
-- 잉크 랜덤 드랍 (이준영)
-
-<details>
-<summary> 작업물 </summary>
 ```csharp
     
     void Start()
