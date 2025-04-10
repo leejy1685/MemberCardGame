@@ -105,12 +105,8 @@
 
 <img src="https://github.com/user-attachments/assets/340bbaad-f7ce-45d5-baaf-ebd15f95d30c" width="200" />
 
-</details>
-
-<details>
-<summary> C#스크립트 </summary>
-
-  using System.Collections;
+c#스크립트
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -130,7 +126,13 @@ public class Ink : MonoBehaviour
     }
 
 
+}
+
+
 </details>
+
+<details>
+
 
 
 
