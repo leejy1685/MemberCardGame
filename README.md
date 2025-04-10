@@ -1,4 +1,4 @@
-# ❤ 팀 소개
+![image](https://github.com/user-attachments/assets/48aa7bd4-41f4-4983-97d3-87e8d0219521)# ❤ 팀 소개
 - **프로젝트 명 :  [Unity 9기] 맴버 카드 프로젝트**
 - **프로젝트 소개 :  우리 팀, 우리만의 이야기를 담을 수 있는 ‘팀원 소개 카드게임’ 으로 만드는 것을 목표로 합니다.**
 <img src="https://github.com/user-attachments/assets/68e1279e-9c20-4b58-99f7-8ca8cf8c07b9" width="300" />
@@ -6,7 +6,7 @@
 
 
 # 필수 구현 기능 제작
-### 과제목표
+## 과제목표
     
 - 한 사람 당 본인을 대표할 수 있는 이미지를 필요한 만큼 준비해주세요.
 - 모든 카드 매칭 성공 시, 팀원들의 이름 및 사진 한 눈에 보여주기 / 실패 시 실패를 알리는 문구 노출
@@ -23,7 +23,7 @@
 <details>
 <summary> 역할 분담 </summary>
 
-1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
+### 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
 <details>
 <summary> 작업물 </summary>
 
@@ -63,7 +63,7 @@
 오디오까지 고려하여 미리준비
 </details>
 
-2. 한예준 : Card (랜덤 이미지 삽입)
+### 2. 한예준 : Card (랜덤 이미지 삽입)
 
 <details>
 <summary> 작업물 </summary>
@@ -142,7 +142,7 @@
 ```
 </details>
 
-3. 최홍진 : UI (시간 측정, 게임 종료 UI)
+### 3. 최홍진 : UI (시간 측정, 게임 종료 UI)
 <details>
 <summary> 작업물 </summary>
 와이어 프레임 기반으로 UI를 제작
@@ -152,7 +152,7 @@
 
 </details>
 
-4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
+### 4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
 <details>
 <summary> 작업물 </summary>
 
@@ -259,7 +259,7 @@
 싱글톤 처리하여 작업진행
 </details>
 
-5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
+### 5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
 <details>
 <summary> 작업물 </summary>
 
@@ -327,7 +327,7 @@
 <summary> 역할 분담 </summary>
 
 ## 1. 게임에 필요한 매니저 추가 작성
-게임 매니저 추가기능 작성 (송치웅)
+### 게임 매니저 추가기능 작성 (송치웅)
 - 각 스테이지에 60초 시간 제한 추가
 <details>
 <summary> 작업물 </summary>
@@ -375,7 +375,7 @@
 ```
 </details>
 
-버튼 매니저 추가 (이준영)
+### 버튼 매니저 추가 (이준영)
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
 <summary> 작업물1 </summary>
@@ -458,7 +458,7 @@ Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 
 
 </details>
 
-사운드 매니저 추가 (이준영)
+### 사운드 매니저 추가 (이준영)
 - 카드를 클릭하거나 뒤집을 때, 게임이 시작될 때, 진행 중 성공 또는 실패 시 효과음을 삽입
 - 타이머 시간이 촉박할 때, 게이머에게 경고하는 배경 음악으로 변경
 
@@ -599,7 +599,7 @@ public void setting(int number)
 </details>
 
 ## 3. 스테이지 or 난이도 추가하기
-카드의 개수가 늘어난 더 어려운 스테이지 구현(윤지민)
+### 카드의 개수가 늘어난 더 어려운 스테이지 구현(윤지민)
 - 난이도 변수를 가져와 1줄씩 추가
 - 1스테이지: 12장 (3×4) 이준영님 사진추가
 - 2스테이지: 16장 (4×4) 한예준님, 윤지민님 사진추가
@@ -608,32 +608,78 @@ public void setting(int number)
 <summary> 작업물 </summary>
 
 ```csharp
+int currentStage = GameManager.Instance.getStage();  // 현재 스테이지 번호를 게임메니저에서 가져옴
 
-코드
+// 스테이지1 카드 12개 배치
+if (currentStage == 1)
+{
+    int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };  // 카드 12개 배치
+    arr = arr.OrderBy(x => Random.Range(0f, 5f)).ToArray();
+
+    for (int i = 0; i < 12; i++)
+    {
+        GameObject go = Instantiate(card, this.transform);
+
+        float x = (i % 4) * 1.2f - 1.8f;  // x 위치 계산
+        float y = (i / 4) * 1.2f - 2.8f;  // y 위치 계산
+        go.transform.position = new Vector2(x, y);  // 계산된 위치로 카드 배치
+
+        go.GetComponent<Card>().setting(arr[i]);  // 각 카드의 번호를 설정
+    }
+
+    GameManager.Instance.cardCount = arr.Length;  // 카드 개수 설정
+}
+
+// 스테이지2
+else if (currentStage == 2)
+{
+    int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };  // 카드 16개 배치
+    arr = arr.OrderBy(x => Random.Range(0f, 7f)).ToArray();
+
+    for (int i = 0; i < 16; i++)
+    {
+        GameObject go = Instantiate(card, this.transform);
+        float x = (i % 4) * 1.2f - 1.8f;
+        float y = (i / 4) * 1.2f - 2.8f;
+        go.transform.position = new Vector2(x, y);
+        go.GetComponent<Card>().setting(arr[i]);
+    }
+
+    GameManager.Instance.cardCount = arr.Length;
+}
+
+// 스테이지3
+else if (currentStage >= 3)
+{
+    int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };  // 카드 20개 배치
+    arr = arr.OrderBy(x => Random.Range(0f, 9f)).ToArray();
+
+    for (int i = 0; i < 20; i++)
+    {
+        GameObject go = Instantiate(card, this.transform);
+
+        float x = (i % 4) * 1.2f - 1.8f;
+        float y = (i / 4) * 1.2f - 3.9f;  //y 위치 계산 (y값을 약간 더 아래로 설정)
+        go.transform.position = new Vector2(x, y);
+
+        go.GetComponent<Card>().setting(arr[i]);
+    }
+
+    GameManager.Instance.cardCount = arr.Length;
+}
 
 ```
 </details>
 
-
-
-
-
-
-
-
-
-
-    
-스테이지 선택, 구분 가능한 화면 제작 (최홍진)
+### 스테이지 선택, 구분 가능한 화면 제작 (최홍진)
 - 와이어 프레임 기반으로 UI제작
 <details>
 <summary> 작업물 </summary>
+![image](https://github.com/user-attachments/assets/bfdfc628-3913-41f6-9bc2-49523a48ad64)
+![image](https://github.com/user-attachments/assets/ed84fc7a-d1ff-44f4-ab02-7c02e8795454)
+![image](https://github.com/user-attachments/assets/ab933b87-f83c-47c6-9833-e06284373fdf)
+![image](https://github.com/user-attachments/assets/5c7c5472-b001-4aae-9709-dee6f062f07f)
 
-```csharp
-
-코드
-
-```
 </details>
 
 
@@ -660,7 +706,7 @@ public void setting(int number)
 
     
 ## 4.히든 스테이지 구현하기
-해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
+### 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
 - 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
 <details>
 <summary> 작업물 </summary>
@@ -698,7 +744,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 ```
 </details>
 
-기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
+### 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
 - 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)(이준영)
 <details>
 <summary> 프리팹 </summary>
