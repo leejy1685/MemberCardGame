@@ -82,6 +82,14 @@
     
 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현. (최홍진)
 - 잉크(커지고 점점 사라지는 효과)프리팹 생성
+- </details>
+
+<details>
+<summary> 프리팹 </summary>
+
+내용
+
+</details>
 
 
 
@@ -97,9 +105,23 @@
 </details>
 
 
+# 필수기능 시연영상
+<details>
+<summary>게임진행</summary>
 
+<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="500" />
 
-# 시연영상
+- 난이도증가  
+
+<img src="https://github.com/user-attachments/assets/66ae0999-3edd-42ca-a893-a0571cb2a721" width="500" />
+
+- 히든 스테이지  
+
+<img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
+
+</details>
+
+# 추가기능 시연영상
 <details>
 <summary>게임진행</summary>
 
@@ -116,7 +138,12 @@
 </details>
 
 
+<details>
+<summary>트러블 슈팅</summary>
 
+
+
+</details>
 
 
 
