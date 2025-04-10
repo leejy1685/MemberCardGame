@@ -19,16 +19,14 @@ public class GameManager : MonoBehaviour
     public GameObject hiddenStageStart;
     public GameObject ink;
     public GameObject endPanel;
-    public GameObject[] stageClearPanel = new GameObject[4];
-
-
-    //public GameObject hiddenPanel;
+    public GameObject[] stageClearPanel = new GameObject[4]; // stageArr
 
     float time = 60.0f;
     int score = 0;
     bool time20 = true;
 
     int stage;
+    // Clear Condition Variable
     public int cardCount = 0;
 
     AudioSource audioSource;
@@ -37,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if (Instance == null) // Singleton
             Instance = this;
     }
     void Start()
@@ -59,24 +57,24 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        if (time < 0.0f)
+        if (time < 0.0f) // time == 0s -> Timeover
         {
             time = 0.0f;
-            Gameover();
+            Timeover();
             ShowEndUI();
         }
-        else if (time < 20.0f && time20)
+        else if (time < 20.0f && time20) // time < 20s -> AddSound
         {
             AudioManager.instance.timeOutSound();
             time20 = false;
         }
-        else
+        else // time != 0 -> time Decrement
         {
             time -= Time.deltaTime;
         }
         timeTxt.text = time.ToString("N2");
     }
-    public void Gameover()
+    public void Timeover()
     {
         Time.timeScale = 0f;
     }
@@ -84,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         if (firstCard.idx == secondCard.idx)
         {
+            // Matched
             audioSource.PlayOneShot(matchClip);
 
             firstCard.DestroyCard();
@@ -95,13 +94,14 @@ public class GameManager : MonoBehaviour
             if(cardCount == 0) // Gameclear
             {
                 AudioManager.instance.BGMSound();
-                Gameover();
+                Timeover();
                 ShowClearUI();
                 PlayerSaveData();
             }
         }
         else
         {
+            // notMatched
             audioSource.PlayOneShot(notMatchClip);
 
             firstCard.CloseCard();
