@@ -466,7 +466,7 @@ Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 
 <summary> 작업물 </summary>
 AudioManager.cs
 ```csharp
-        public static AudioManager instance;
+    public static AudioManager instance;
     
     AudioSource audioSource;  // 오디오 소스 컴포넌트
     public AudioClip BGMClip;  // BGM (배경 음악)
@@ -683,29 +683,6 @@ else if (currentStage >= 3)
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 ## 4.히든 스테이지 구현하기
 ### 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
 - 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
