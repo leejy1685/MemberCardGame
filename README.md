@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/48aa7bd4-41f4-4983-97d3-87e8d0219521)# ❤ 팀 소개
+# ❤ 팀 소개
 - **프로젝트 명 :  [Unity 9기] 맴버 카드 프로젝트**
 - **프로젝트 소개 :  우리 팀, 우리만의 이야기를 담을 수 있는 ‘팀원 소개 카드게임’ 으로 만드는 것을 목표로 합니다.**
 <img src="https://github.com/user-attachments/assets/68e1279e-9c20-4b58-99f7-8ca8cf8c07b9" width="300" />
