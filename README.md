@@ -15,6 +15,8 @@
 
 </details>
 
+</details>
+
 <details>
 <summary>필수 구현 기능 와이어프레임</summary>
 
