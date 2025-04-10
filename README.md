@@ -21,7 +21,8 @@
 <details>
 <summary> 필수 구현 기능 와이어 프레임 </summary>
     
-    ![image](https://user-images.githubusercontent.com/12345678/abcdefg.png)
+    ![image](https://github.com/user-attachments/assets/add5a3ef-adea-45f1-92ae-e550df637090)
+
 
 
 </details>
