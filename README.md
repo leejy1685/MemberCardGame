@@ -26,6 +26,7 @@
 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
 <details>
 <summary> 작업물 </summary>
+
 ```csharp
     AudioSource audioSource;  // 오디오 소스를 담을 변수. 버튼 클릭 시 소리를 재생하기 위해 사용.
     public AudioClip clip;    // 버튼 클릭 시 재생될 오디오 클립을 저장할 변수.
