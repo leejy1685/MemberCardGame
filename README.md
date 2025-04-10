@@ -69,17 +69,17 @@
 
 ```csharp
     public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
-    public GameObject front;  // 카드의 앞면(GameObject)
-    public GameObject back;   // 카드의 뒷면(GameObject)
-    public Animator anim;  // 카드 애니메이션을 제어하는 Animator
+    public GameObject front;  // 카드의 앞면
+    public GameObject back;   // 카드의 뒷면
+    public Animator anim;  // 카드 애니메이션을 제어
 
-    AudioSource audioSource;  // 카드 클릭 시 소리를 재생할 AudioSource
-    public AudioClip clip;    // 카드 클릭 시 재생될 오디오 클립(Flip Sound)
+    AudioSource audioSource;
+    public AudioClip clip;
 
-    // 초기화 작업을 수행하는 Start() 메소드
+  
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();  // 게임 오브젝트에 부착된 AudioSource 컴포넌트를 가져와 audioSource 변수에 저장
+        audioSource = GetComponent<AudioSource>();
     }
 
     // 카드를 열 때 호출되는 메소드
@@ -158,105 +158,121 @@
 <summary> 작업물 </summary>
 
 ```csharp
-public static GameManager Instance;
+ public static GameManager Instance;  // 싱글톤 패턴을 적용하여 다른 스크립트에서 접근할 수 있는 인스턴스
 
-public Card firstCard;
-public Card secondCard;
+    public Card firstCard;  // 첫 번째로 선택된 카드
+    public Card secondCard;  // 두 번째로 선택된 카드
 
-public Text timeTxt;
-public Text scoreTxt;
-public Text stageTxt;
-public GameObject endPanel;
-public GameObject clearPanel;
+    public Text timeTxt;  // 시간 표시를 위한 UI 텍스트
+    public Text scoreTxt;  // 점수 표시를 위한 UI 텍스트
+    public Text stageTxt;  // 단계 표시를 위한 UI 텍스트
+    public GameObject endPanel;  // 게임 종료 시 표시될 UI 패널
+    public GameObject clearPanel;  // 게임 클리어 시 표시될 UI 패널
 
-float time = 0.0f;
-int score = 0;
-int stage = 1;
-bool time20 = true;
+    float time = 0.0f;  // 게임 시간
+    int score = 0;  // 플레이어 점수
+    int stage = 1;  // 현재 게임 단계
+    bool time20 = true;  // 20초 지났을 때 알림을 한 번만 보내기 위한 변수
 
-public int cardCount = 0;
+    public int cardCount = 0;  // 남은 카드 수
 
-AudioSource audioSource;
-public AudioClip matchClip; //match sound
-public AudioClip notMatchClip;  //not match sound
+    AudioSource audioSource;  // 게임 오디오를 재생하기 위한 AudioSource
+    public AudioClip matchClip;  // 카드가 맞았을 때 재생될 소리
+    public AudioClip notMatchClip;  // 카드가 맞지 않았을 때 재생될 소리
 
-void Awake()
-{
-    if (Instance == null)
-        Instance = this;
-}
-void Start()
-{
-    Time.timeScale = 1.0f;
-    audioSource = GetComponent<AudioSource>();
-}
-void Update()
-{
-    // 시간 제한
-    if (time > 30.0f)
+    // 싱글톤 패턴을 위한 Awake() 메소드
+    void Awake()
     {
-        time = 30.0f;
-        Gameover();
-        ShowEndUI();
+        if (Instance == null)
+            Instance = this;  // 인스턴스가 없다면 현재 오브젝트를 인스턴스로 설정
     }
-    else if(time > 20.0f && time20)
-    {
-        AudioManager.instance.timeOutSound();
-        time20 = false;
-    }
-    else
-    {
-        time += Time.deltaTime;
-    }
-    // time += Time.deltaTime;
-    timeTxt.text = time.ToString("N2");
-}
-public void isMatched()
-{
-    if (firstCard.idx == secondCard.idx)
-    {
-        audioSource.PlayOneShot(matchClip);
 
-        // idx가 일치하면 destroyCard
-        firstCard.DestroyCard();
-        secondCard.DestroyCard();
-        // Board에서 arr[i]값 받아오기
-        cardCount -= 2;
-        score++;
 
-        if(cardCount == 0) // 모두 맞추면 게임 종료
+    void Start()
+    {
+        Time.timeScale = 1.0f;  // 게임의 시간을 정상 속도로 설정
+        audioSource = GetComponent<AudioSource>();  // AudioSource 컴포넌트 가져오기
+    }
+
+    void Update()
+    {
+        // 시간 제한 체크 (30초가 지나면 게임 오버)
+        if (time > 30.0f)
         {
-            AudioManager.instance.BGMSound();
-            Gameover();
-            clearPanel.SetActive(true);
-            //ShowEndUI();
+            time = 30.0f;  // 시간을 30초로 제한
+            Gameover();  // 게임 오버 호출
+            ShowEndUI();  // 게임 종료 UI 표시
         }
+        else if(time > 20.0f && time20)  // 시간이 20초를 넘기면 한 번만 알림
+        {
+            AudioManager.instance.timeOutSound();  // 시간이 20초가 넘어가면 경고음 재생
+            time20 = false;  // 경고음을 한 번만 재생하도록 설정
+        }
+        else
+        {
+            time += Time.deltaTime;  // 시간이 지나면 `time` 변수에 누적
+        }
+
+        // 게임 시간이 UI에 표시되도록 업데이트
+        timeTxt.text = time.ToString("N2");  // 소수점 두 자리까지 표시
     }
-    else
+
+    // 카드 두 개가 맞는지 확인하는 메소드
+    public void isMatched()
     {
-        audioSource.PlayOneShot(notMatchClip);
-        // idx가 일치 하지 않으면 closeCard
-        firstCard.CloseCard();
-        secondCard.CloseCard();
+        // 두 카드의 번호가 일치하는지 확인
+        if (firstCard.idx == secondCard.idx)
+        {
+            audioSource.PlayOneShot(matchClip);  // 카드가 맞으면 맞추기 소리 재생
+
+            // 두 카드가 일치하면 삭제
+            firstCard.DestroyCard();
+            secondCard.DestroyCard();
+
+            // 남은 카드 수를 2개 줄임 (두 카드를 맞췄기 때문에)
+            cardCount -= 2;
+            score++;  // 점수 1점 추가
+
+            // 모든 카드를 맞췄으면 게임 종료
+            if(cardCount == 0)
+            {
+                AudioManager.instance.BGMSound();  // 배경 음악을 재생
+                Gameover();  // 게임 오버 처리
+                clearPanel.SetActive(true);  // 게임 클리어 UI 활성화
+            }
+        }
+        else
+        {
+            audioSource.PlayOneShot(notMatchClip);  // 카드가 맞지 않으면 틀리기 소리 재생
+
+            // 두 카드가 일치하지 않으면 닫기
+            firstCard.CloseCard();
+            secondCard.CloseCard();
+        }
+
+        // 두 카드를 null로 설정하여 다음 카드 선택을 기다림
+        firstCard = null;
+        secondCard = null;
     }
-    firstCard = null;
-    secondCard = null;
-}
 
-public void Gameover()
-{
-    Time.timeScale = 0f;
-}
+    // 게임 오버 처리
+    public void Gameover()
+    {
+        Time.timeScale = 0f;  // 게임 시간을 멈춤 (시간 흐르지 않게)
+    }
 
-public void ShowEndUI()
-{
-    endPanel.SetActive(true);
+    // 게임 종료 UI를 표시하는 메소드
+    public void ShowEndUI()
+    {
+        endPanel.SetActive(true);  // 게임 종료 패널 활성화
 
-    scoreTxt.text = score.ToString();
-    stageTxt.text = stage.ToString();
-}
+        // 점수와 단계 정보를 UI에 표시
+        scoreTxt.text = score.ToString();
+        stageTxt.text = stage.ToString();
+    }
 
 ```
+싱글톤 처리하여 작업진행
 </details>
 
 5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
