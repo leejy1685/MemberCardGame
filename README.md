@@ -884,7 +884,7 @@ void Start()
 # 시연영상
 ## 필수기능 완성본 시연영상
 <details>
-<summary>게임진행</summary>
+<summary> 게임 진행 </summary>
 
 <img src="https://github.com/user-attachments/assets/a20a8476-f106-4137-a212-3f6d579540c5" width="300" />
 
@@ -893,14 +893,14 @@ void Start()
 ## 추가기능 완성본 시연영상
 
 <details>
-<summary> 게임진행 </summary>
+<summary> 게임 진행 </summary>
 
 <img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="300" />
 
 </details>
 
 <details>
-<summary> 난이도증가 </summary>
+<summary> 난이도 증가 </summary>
 
 <img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
 
