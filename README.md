@@ -1,7 +1,7 @@
 # ❤ 팀 소개
 - **프로젝트 명 :  [Unity 9기] 맴버 카드 프로젝트**
 - **프로젝트 소개 :  우리 팀, 우리만의 이야기를 담을 수 있는 ‘팀원 소개 카드게임’ 으로 만드는 것을 목표로 합니다.**
-<img src="https://github.com/user-attachments/assets/68e1279e-9c20-4b58-99f7-8ca8cf8c07b9" width="200" />
+<img src="https://github.com/user-attachments/assets/68e1279e-9c20-4b58-99f7-8ca8cf8c07b9" width="300" />
 
 
 
@@ -118,7 +118,7 @@
 <details>
 <summary>게임진행</summary>
 
-<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="500" />
+
 
 </details>
 
@@ -126,21 +126,21 @@
 <details>
 <summary> 게임진행 </summary>
 
-<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="500" />
+<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="300" />
 
 </details>
 
 <details>
 <summary> 난이도증가 </summary>
 
-<img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="500" />
+<img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
 
 </details>
 
 <details>
 <summary> 히든 스테이지 </summary>
 
-<img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
+<img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="300" />
 
 </details>
 
