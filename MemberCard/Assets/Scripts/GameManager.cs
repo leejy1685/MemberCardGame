@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
     public GameObject endPanel;
     public GameObject[] stageClearPanel = new GameObject[4];
 
-
-    //public GameObject hiddenPanel;
-
     float time = 60.0f;
     int score = 0;
     bool time20 = true;
@@ -129,16 +126,15 @@ public class GameManager : MonoBehaviour
     public void PlayerSaveData()
     {
         int bestStage = PlayerPrefs.GetInt("stageClear");
+        //hidden stage open condition
+        if (stage == 3 && time <= 20)
+        {
+            stage--;
+        }
         stage++;
         //best clear data save
         if (bestStage < stage)
         {
-            bestStage = stage;
-        }
-        //hidden stage open condition
-        if (stage == 4 && time <= 20)
-        {
-            stage--;
             bestStage = stage;
         }
         //maxStage

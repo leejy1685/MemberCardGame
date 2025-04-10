@@ -52,7 +52,6 @@ public class Button : MonoBehaviour
 
     public void stageButton()
     {
-        AudioManager.instance.BGMSound();
         SceneManager.LoadScene("StageScene");
     }
 

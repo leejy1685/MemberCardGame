@@ -12,7 +12,8 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1.0f;
+        AudioManager.instance.BGMSound();
+
         stage = PlayerPrefs.GetInt("stageClear");
 
         if(stage >= 2)
@@ -27,8 +28,5 @@ public class StageManager : MonoBehaviour
         {
             hiddenStage.SetActive(true);
         }
-
-
-       
     }
 }

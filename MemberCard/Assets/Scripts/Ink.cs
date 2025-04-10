@@ -10,12 +10,7 @@ public class Ink : MonoBehaviour
         float y = Random.Range(-4.0f, 2.0f);
 
         transform.position = new Vector3(x, y, 0);
-        Invoke("DestroyInvoke", 6.0f);
+        Destroy(gameObject,6.0f);
     }
-    void DestroyInvoke()
-    {
-        Destroy(gameObject);
-    }
-
 
 }
