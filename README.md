@@ -57,7 +57,6 @@ int stage;
 ```
 StageScene의 UI를 관리하기 위한 코드이다. PlayerPrefs에 저장된 나의 스테이지 클리어 기록을 가져와서 입장 가능한 stage를 표시한다.
 BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운드가 변경되지 않기 때문이다.
-![image](https://github.com/user-attachments/assets/1279df3c-b9aa-45a5-bb8f-eaa18bf5abd8)
 
 ```csharp
 
@@ -68,7 +67,6 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 
 ```
 게임의 클리어 기록을 초기화하기 위한 코드이다. StartScene에 있는 ResetCode 오브젝트를 활성화하고 실행하면 클리어 기록이 초기화 된다.
-![image](https://github.com/user-attachments/assets/1933bbe6-d527-4eb1-8228-001a72ece823)
 
 </details>
 
