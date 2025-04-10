@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        AudioManager.instance.BGMSound();
         getStage();
         Time.timeScale = 1.0f;
 
