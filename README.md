@@ -723,7 +723,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 </details>
 
 ### 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
-- 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)(이준영)
+- 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
 <details>
 <summary> 프리팹 </summary>
     
@@ -811,39 +811,16 @@ Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 최홍진님
 <details>
 <summary> 접기 </summary>
+이미지 위에 텍스트를 배치하고 그 안에 버튼을 넣는 방식으로 UI를 구성했을 때, 예상치 못한 문제가 발생했습니다.
+GitHub에서 작업을 합치면서 사전에 이 점을 알리지 못하였고, 이미지에 버튼을 만들어 버튼이 작동하지 않았습니다.
+이 문제는 텍스트가 이미지보다 위에 배치되었기 때문에, 버튼이 텍스트에 가려져서 사용자 클릭이 버튼에 전달되지 않은 것입니다.
+즉, 버튼이 시각적으로 존재하긴 했지만, 실제로는 텍스트가 버튼을 가리고 있어 버튼이 작동하지 않았습니다.
+협업 시 내 작업 사항이 다른 작업에 영향을 미칠 수 있음을 깨달았습니다.
 
-```csharp
-
-코드
-
-```
 </details>
-
-
-
-
-
-
-
-
 
 # 송치웅님
 <details>
@@ -864,24 +841,9 @@ secondCard.DestroyCard();
 [22.3.17f1] 버전으로 와서 처음 써보는 PlayerPrefs 를 사용하려고 강의도 찾아보고 구글도 검색하느라 시간을 많이 사용했습니다.
 </details>
 
-
-
-
-
-
-
 # 윤지민님 
 <details>
 <summary> 접기 </summary>
-
-```csharp
-int currentStage = GameManager.Instance.getStage() // int currentStage == GameManager.Instance.stage()(기능은 동일)
-문장을
-void Start()
-	{
-	}
-
-```
 
 가장 고민을 많이 한 부분
 원인 분석
