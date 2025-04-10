@@ -580,7 +580,6 @@ stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 
 코드
 
 ```
-
 </details>
 
 
