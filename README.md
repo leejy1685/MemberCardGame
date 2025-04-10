@@ -87,7 +87,8 @@
 <details>
 <summary> 프리팹 </summary>
 
-내용
+![2025-04-10151340-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/340bbaad-f7ce-45d5-baaf-ebd15f95d30c)
+
 
 </details>
 
