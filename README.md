@@ -114,24 +114,21 @@ public class Ink : MonoBehaviour
 {
     void Start()
     {
-        float x = Random.Range(-2.0f, 2.0f);
-        float y = Random.Range(-4.0f, 2.0f);
+        float x = Random.Range(-2.0f, 2.0f); //x축값 설정
+        float y = Random.Range(-4.0f, 2.0f); //y축값 설정
 
-        transform.position = new Vector3(x, y, 0);
-        Invoke("DestroyInvoke", 6.0f);
+        transform.position = new Vector3(x, y, 0); // 랜덤생성
+        Invoke("DestroyInvoke", 6.0f); //오브잭트 파괴 불러오기
     }
 
     void DestroyInvoke()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); //오브잭트 파괴
     }
 }
 ```
 
-
 </details>
-
-
 
 
 </details>
