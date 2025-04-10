@@ -186,6 +186,7 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
     
 버튼 매니저 추가 (이준영)
 -스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
+
 <details>
 <summary> 작업물 </summary>
 
@@ -330,144 +331,6 @@ AudioManager 오브젝트에는 AudioSource 컴포넌트의 loop를 true값으�
 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
 - 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
 
-<details>
-<summary> 작업물 </summary>
-게임 매니저는 내가 전부 만든게 아니라 내가 만든 부분만 적기로 하였다.
-GameManager.cs
-```csharp
-public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만족시 나오는 버튼
-    public GameObject ink;	//히든 스테이지 시 생성되는 오브젝트
-    //스테이지 클리어 마다 나오는 판넬이 다르기 때문에 배열로 구현
-    public GameObject[] stageClearPanel = new GameObject[4];
-	
-    private void ShowClearUI()
-    {
-        if(stage == 3 && time <= 20)
-        {	//히든 스테이크 오픈 조건에 맞으면 히든 스테이지로 바로 입장하는 버튼 생성
-            hiddenStageStart.SetActive(false);
-        }
-        //배열로 구현된 클리어 판넬 
-        stageClearPanel[stage-1].SetActive(true);
-    }
-    
-    void Start()
-    {
-    	... 중략 ...
-    	
-        if(stage == 4)  //hidden stage
-        {	//1.5초 마다 잉크 생성
-            InvokeRepeating("MakeInk", 0.0f, 1.5f);
-        }
-    }
-    
-    void MakeInk()	//잉크 생성
-    {
-        Instantiate(ink);
-    }
-
-```
-먼저 히든 스테이지를 구현하기 위해서 만든 코드 들이다. 3스테이지에서 남은 시간이 20초 이하 일 때 히든 스테이지로 넘어 갈 수 없게 버튼을 비활성화 시킨다.
-그리고 만약 스테이지가 히든 스테이지(stage == 4)면 1.5초 마다 잉크가 생성 되게 설정 하였다.
-```csharp
-    bool time20 = true;
-    
-    AudioSource audioSource;	//소리 재생을 위한 클래스
-    public AudioClip matchClip; //match sound
-    public AudioClip notMatchClip;  //not match sound
-    
-    void Start()
-    {	//오디오 소스 컴포넌트 가져오기
-        audioSource = GetComponent<AudioSource>();
-        
-        ... 생략 ...
-    }
-    
-    void Update()
-    {
-        GameStart();
-    }
-    
-    public void GameStart()
-	{
-    	if (time < 0.0f)
-    	{
-			... 생략 ...
-    	}
-    	else if (time < 20.0f && time20)
-    	{
-       		AudioManager.instance.timeOutSound();
-        	time20 = false;
-    	}
-    	else
-    	{
-        	... 생략 ...
-    	}
-    	... 생략 ...
-	}
-    
-    
- 	public void isMatched()
-  	{
-      	if (firstCard.idx == secondCard.idx)	//카드가 일치하면 
-      	{
-        	audioSource.PlayOneShot(matchClip);	//일치하는 소리
-            ... 생략 ...
-        }
-        else	//일치하지 않으면
-        {
-        	audioSource.PlayOneShot(notMatchClip);	//일치하지 않는 소리
-        }
-
-```
-다음은 사운드 기능이다. 남은 시간이 20초 미만이 되면 시간이 부족한 사운드로 변경을 해준다. 여기서 bool타입 변수로 해준 이유는 Update 함수에서 무한 반복 되면 소리가 첫 음만 계속 반복 되기 때문에 딱 한번만 실행 되도록 bool타입 변수로 조정 해주었다.
-카드가 일치하면 일치하는 소리가 일치하지 않으면 일치하지 않는 소리가 재생되도록 넣어주었다.
-```csharp
-	int stage;
-    
-    public int getStage()	//현재 스테이지를 파악하고 넘겨주는 함수
-    {						//Button.cs에선 GameManager에게 스테이지 정보를 넘기기 위해
-    						//Board.cs에선 GameManager의 스테이지 정보를 받기 위해서 사용
-        stage = PlayerPrefs.GetInt("stage");
-        return stage;
-    }
-    
-    void Start()
-    {
-		... 생략 ...
-        getStage();	//이전 스테이지를 클리어하고 넘어오면 stage 변수가 초기화 되기 때문에 실행
-		... 생략 ...
-    }
-    public void PlayerSaveData()
-    {
-    	//최고 클리어 기록 가져오기
-        int bestStage = PlayerPrefs.GetInt("stageClear"); //히든 스테이지는 클리어 조건을 만족해야 함.
-        if (stage == 3 && time <= 20)
-        {
-            stage--;
-        }
-        stage++;	//현재 스테이지를 클리어 했기 때문에 다음 스테이지까지 플레이 가능
-        //최고 클리어 기록을 저장
-        if (bestStage < stage)
-        {
-            bestStage = stage;
-        }
-        //최대 스테이지는 히든까지
-        if(bestStage > 4)
-        {
-            bestStage = 4;
-        }
-		
-        PlayerPrefs.SetInt("stageClear", bestStage);	//저장
-        PlayerPrefs.Save();
-
-    }
-
-```
-다음 기능은 스테이지 관리 기능이다. 플레이어 프리펩으로 스테이지를 관리하였다.
-stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 가능한 스테이지를 말한다.
-
-</details>
-
     
 기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
 - 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
@@ -496,7 +359,7 @@ stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 
 ```
 </details>
 
-
+</details>
 
 
 
