@@ -21,16 +21,16 @@
 <details>
 <summary> 필수 구현 기능 와이어 프레임 </summary>
     
-    ![image.png](attachment:781f48f2-d9c7-402d-bd42-7ee2d71eb071:image.png)
-    
+    ![image](https://github.com/user-attachments/assets/b439afd7-1606-4a4b-b4a1-beb0d0729164)
+
 </details>
 
 
 
 
 ### 추가 구현 기능 제작
-
-- 추가 구현 기능
+<details>
+<summary> 추가 구현 기능 </summary>
     
     # 1. 추가 구현 기능 기획
     
@@ -93,9 +93,40 @@
     **기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현. (최홍진)**
     
     - 잉크(커지고 점점 사라지는 효과)프리팹 생성
-    
+
+</details>
+
+<details>
 - 추가 구현 기능 와이어 프레임
     
-    ![image.png](attachment:b89f8369-d8a1-43c6-afdf-9df5da29bd64:image.png)
-    
+    ![image (1)](https://github.com/user-attachments/assets/9bce4bca-68ec-476e-b479-f991524d396f)
+
     https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
