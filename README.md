@@ -766,12 +766,6 @@ else if (currentStage >= 3)
 
 <img src="https://github.com/user-attachments/assets/4524e4cd-2411-4c41-9c6d-fa69aab1b415" width="300" />
 
-
-```csharp
-
-코드
-
-```
 프로젝트을 다 통합하고 Scene들을 연결하는 과정에서 버튼이 눌리지 않는 버그를 찾았다.
 stage1 Button이 눌려야 하는데 작동하지 않아서 코드가 잘 못 된건지 확인해보기 위해서 StartScene에서 MainScene으로 넘어가게 해보았다.
 
@@ -796,11 +790,6 @@ Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 
 <details>
 <summary> 접기 </summary>
 
-```csharp
-
-코드
-
-```
 기능 구현 중 문제 상황과 해결
 - 카드 뒤집는 애니메이션 무한 반복 문제
 - bool값에 의해 애니메이션이 재생
@@ -826,6 +815,7 @@ Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 
 # 최홍진님
 <details>
 <summary> 접기 </summary>
+
 이미지 위에 텍스트를 배치하고 그 안에 버튼을 넣는 방식으로 UI를 구성했을 때, 예상치 못한 문제가 발생했습니다.
 GitHub에서 작업을 합치면서 사전에 이 점을 알리지 못하였고, 이미지에 버튼을 만들어 버튼이 작동하지 않았습니다.
 이 문제는 텍스트가 이미지보다 위에 배치되었기 때문에, 버튼이 텍스트에 가려져서 사용자 클릭이 버튼에 전달되지 않은 것입니다.
