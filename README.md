@@ -97,13 +97,15 @@
 <details>
 <summary>게임진행</summary>
 
-![게임 플레이 움짤](https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5)
+<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="500" />
 
-- 난이도증가
-  ![난이도 움짤](https://github.com/user-attachments/assets/66ae0999-3edd-42ca-a893-a0571cb2a721)
+- 난이도증가  
 
-- 히든 스테이지
-  ![히든 스테이지 움짤](https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270)
+<img src="https://github.com/user-attachments/assets/66ae0999-3edd-42ca-a893-a0571cb2a721" width="500" />
+
+- 히든 스테이지  
+
+<img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
 
 </details>
 
