@@ -124,18 +124,23 @@
 
 # 추가기능 시연영상
 <details>
-<summary>게임진행</summary>
+<summary> 게임진행 </summary>
 
 <img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="500" />
 
-- 난이도증가  
+</details>
+
+<summary> 난이도증가 <summary>
 
 <img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="500" />
 
-- 히든 스테이지  
+</details>
+
+<summary> 히든 스테이지 <summary>
 
 <img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
 
+</details>
 
 
 
