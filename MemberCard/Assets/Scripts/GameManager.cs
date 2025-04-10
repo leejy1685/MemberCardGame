@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     //public GameObject hiddenPanel;
 
-    float time = 60.0f;
+    float time = 30.0f;
     int score = 0;
     bool time20 = true;
 
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        AudioManager.instance.BGMSound();
         getStage();
         Time.timeScale = 1.0f;
 
