@@ -779,6 +779,24 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 코드
 
 ```
+프로젝트을 다 통합하고 Scene들을 연결하는 과정에서 버튼이 눌리지 않는 버그를 찾았다.
+stage1 Button이 눌려야 하는데 작동하지 않아서 코드가 잘 못 된건지 확인해보기 위해서 StartScene에서 MainScene으로 넘어가게 해보았다.
+
+![image](https://github.com/user-attachments/assets/8744a195-8331-4837-b7ef-b1ba7cdf66af)
+
+잘 작동 된다. 그러면 UI쪽을 배치하면서 잘 못 된것 같다. UI는 내가 작업한게 아니라 다른 브랜치에서 받아온 것이라 잘 살펴 보기로 하였다.
+
+![image](https://github.com/user-attachments/assets/bfbf55e6-4df2-4bd4-b3e1-96ef0f004670)
+
+잘 확인해보니 내가 image 오브젝트에 직접 넣은 Button 컴포넌트가 아닌 Text 오브젝트에 Button가 들어가 있어서, image 보다 앞에 존재하는 Text의 버튼이 눌려서 작동이 하지 않는 것 같다.
+Text에 있는 Button 컴포넌트를 제거하고 작동 해 보았다.
+
+![image](https://github.com/user-attachments/assets/cf6f907e-6e35-4e82-88c0-8fb38d93df4a)
+	
+잘 작동한다.
+나는 UI에서 Button 오브젝트를 생성하면 나오는 것 처럼 Image 쪽에 Button 컴포넌트가 있을 거라 생각해서 나온 오류였다.
+Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 쪽에 Button 컴포넌트가 없었는지 생각해보지 않았다. 그래서 더 해결하는데 시간이 걸렸던 것 같다.
+
 </details>
 
 
