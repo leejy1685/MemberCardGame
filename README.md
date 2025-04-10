@@ -35,7 +35,7 @@
         audioSource = GetComponent<AudioSource>();
     }
 
-    // 게임 시작 버튼 클릭 시 호출되는 메소드
+    // 게임 시작 버튼 클릭 시 호출
     public void StartGame()
     {
         Time.timeScale = 1.0f;  // 게임 시간을 정상 흐름으로 설정. 일시정지 상태를 해제하는 역할.
@@ -44,7 +44,7 @@
         Invoke("StartGameInvoke", 0.5f); 
     }
 
-    // 리셋 버튼 클릭 시 호출되는 메소드
+    // 리셋 버튼 클릭 시 호출
     public void resetButton()
     {   
         Time.timeScale = 1.0f;  // 게임 시간을 정상 흐름으로 설정, 일시정지 상태 해제.
@@ -52,7 +52,7 @@
         SceneManager.LoadScene("StartScene");  // 스타트 씬으로 전환, 게임을 초기 상태로 리셋.
     }
 
-    // 0.5초 후에 호출되는 메소드
+    // 0.5초 후에 호출
     void StartGameInvoke()
     {
         SceneManager.LoadScene("MainScene");  // 메인 씬으로 전환
@@ -82,7 +82,7 @@
         audioSource = GetComponent<AudioSource>();
     }
 
-    // 카드를 열 때 호출되는 메소드
+    // 카드를 열 때 호출
     public void OpenCard()
     {
         audioSource.PlayOneShot(clip);  // 카드가 열릴 때 소리를 한 번 재생
@@ -104,7 +104,7 @@
         }
     }
 
-    // 카드를 삭제할 때 호출되는 메소드
+    // 카드를 삭제할 때 호출
     public void DestroyCard()
     {
         Invoke("DestoryCardInvoke", 1.0f);  // 1초 후 DestoryCardInvoke 메소드를 호출하여 카드를 삭제
@@ -116,7 +116,7 @@
         Destroy(gameObject);  // 게임 오브젝트(카드)를 삭제
     }
 
-    // 카드를 닫을 때 호출되는 메소드
+    // 카드를 닫을 때 호출
     public void CloseCard()
     {
         Invoke("CloseCardInvoke", 1.0f);  // 1초 후 CloseCardInvoke 메소드를 호출하여 카드를 닫음
@@ -178,7 +178,7 @@
     public AudioClip matchClip;  // 카드가 맞았을 때 재생될 소리
     public AudioClip notMatchClip;  // 카드가 맞지 않았을 때 재생될 소리
 
-    // 싱글톤 패턴을 위한 Awake() 메소드
+    // 싱글톤 패턴을 위한 Awake
     void Awake()
     {
         if (Instance == null)
@@ -215,7 +215,7 @@
         timeTxt.text = time.ToString("N2");  // 소수점 두 자리까지 표시
     }
 
-    // 카드 두 개가 맞는지 확인하는 메소드
+    // 카드 두 개가 맞는지 확인
     public void isMatched()
     {
         // 두 카드의 번호가 일치하는지 확인
@@ -259,7 +259,7 @@
         Time.timeScale = 0f;  // 게임 시간을 멈춤 (시간 흐르지 않게)
     }
 
-    // 게임 종료 UI를 표시하는 메소드
+    // 게임 종료 UI
     public void ShowEndUI()
     {
         endPanel.SetActive(true);  // 게임 종료 패널 활성화
@@ -281,7 +281,7 @@
     public Transform Cards;  // 카드들을 배치할 부모 트랜스폼
     public GameObject card;  // 카드 프리팹(GameObject)
 
-    // Start() 메소드: 게임 시작 시 카드들을 생성하는 함수
+    // 게임 시작 시 카드들을 생성하는 함수
     void Start()
     {
         // 카드에 할당될 번호 배열 (0~9까지의 숫자 두 개씩 포함)
@@ -313,58 +313,6 @@
 </details>
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 추가 구현 기능 제작
 ## 추가 구현 기능 기획
@@ -404,6 +352,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <details>
 <summary> 역할 분담 </summary>
 
@@ -417,86 +381,52 @@
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
 <summary> 작업물1 </summary>
-StageManager.cs
 ```csharp
-int stage;
+   int stage;  // 현재 플레이어가 클리어한 스테이지 정보
 
-    public GameObject stage2;
-    public GameObject stage3;
-    public GameObject hiddenStage;
+    public GameObject stage2;  // 스테이지2 버튼
+    public GameObject stage3;  // 스테이지3 버튼
+    public GameObject hiddenStage;  // 히든 스테이지 버튼
 
     private void Start()
     {
-    	AudioManager.instance.BGMSound();
+        AudioManager.instance.BGMSound();
 
+        // PlayerPrefs를 사용하여 이전에 저장된 스테이지 클리어 정보 불러오기기
+        // 만약 값이 없으면 기본값 0을 반환합니다.
         stage = PlayerPrefs.GetInt("stageClear");
-
-        if(stage >= 2)
-        {
-            stage2.SetActive(true);
-        }
-        if(stage >= 3)
-        {
-            stage3.SetActive(true);
-        }
-        if(stage >= 4)
-        {
-            hiddenStage.SetActive(true);
-        }
-    }
-
-```
-StageScene의 UI를 관리하기 위한 코드이다. PlayerPrefs에 저장된 나의 스테이지 클리어 기록을 가져와서 입장 가능한 stage를 표시한다.
-BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운드가 변경되지 않기 때문이다.
-
-```csharp
-
-    void Start()
-    {
-        PlayerPrefs.SetInt("stageClear",1);   //test Code
-    }
-
-```
-게임의 클리어 기록을 초기화하기 위한 코드이다. StartScene에 있는 ResetCode 오브젝트를 활성화하고 실행하면 클리어 기록이 초기화 된다.
-
-</details>
-
-
-<details>
-<summary> 작업물2 </summary>
-
-Button.cs
-```csharp
-    AudioSource audioSource;
-    public AudioClip clip;  //go sound
-
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
+        // 스테이지 값에 따라 각 스테이지의 오브젝트를 활성화합니다.
+        if지1
     public void StartStage1()
     {
-        //for GameManager and Board 
-        PlayerPrefs.SetInt("stage", 1);	//1스테이지로 갈거야라고 GameManager에게 전달
-        Time.timeScale = 1;	//timeScale이 1이어야 invoke가 실행 됨
-        audioSource.PlayOneShot(clip);	//go sound 실행
-        Invoke("StartGameInvoke", 0.5f);    //go sound를 들을 수 있게 0.5초의 간격
-    }    
+        // GameManager에게 1스테이지로 갈 것임을 알리기 위해 PlayerPrefs에 저장
+        PlayerPrefs.SetInt("stage", 1); // "stage" 값으로 1을 설정
+        Time.timeScale = 1;  // 시간 흐름을 정상으로 설정 (게임이 진행되도록)
+        audioSource.PlayOneShot(clip);  // 게임 시작 소리 재생
+        Invoke("StartGameInvoke", 0.5f);  // 0.5초 뒤에 StartGameInvoke 메소드 호출
+    }
+
+    // 스테이지2
     public void StartStage2()
     {
+        // GameManager에게 2스테이지로 갈 것임을 알리기 위해 PlayerPrefs에 저장
         PlayerPrefs.SetInt("stage", 2);
         Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
-    }    
+    }
+
+    // 스테이지3
     public void StartStage3()
     {
+        // GameManager에게 3스테이지로 갈 것임을 알리기 위해 PlayerPrefs에 저장
         PlayerPrefs.SetInt("stage", 3);
         Time.timeScale = 1;
         audioSource.PlayOneShot(clip);
         Invoke("StartGameInvoke", 0.5f);
-    }    
+    }
+
+    // 히든 스테이지
     public void StartStageHidden()
     {
         PlayerPrefs.SetInt("stage", 4);
@@ -505,21 +435,23 @@ Button.cs
         Invoke("StartGameInvoke", 0.5f);
     }
 
+    // 리셋
     public void retryButton()
     {
-        //현재 스테이지로 다시 간다고 GameManager 보내기
-        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
-        SceneManager.LoadScene("MainScene");    //cat't play Invoke
+        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());  // 현재 스테이지 저장
+        SceneManager.LoadScene("MainScene");  // "MainScene" 씬으로 로드
     }
 
-    public void stageButton()	//StageScene으로 넘어가는 코드
+    // 메뉴를 눌렀을 때, 스테이지 씬으로 넘어가는 메소드
+    public void stageButton()
     {
-        SceneManager.LoadScene("StageScene");
+        SceneManager.LoadScene("StageScene");  // "StageScene" 씬으로 로드
     }
 
-    void StartGameInvoke()	//간격을 만들기 위한 인보크
+    // 게임 시작 소리 후, MainScene으로 넘어가는 메소드
+    void StartGameInvoke()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene");  // "MainScene" 씬으로 로드
     }
 
 ```
