@@ -106,12 +106,7 @@
 
 C#스크립트
 ```csharp
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class Ink : MonoBehaviour
-{
     void Start()
     {
         float x = Random.Range(-2.0f, 2.0f); //x축값 설정
@@ -125,7 +120,7 @@ public class Ink : MonoBehaviour
     {
         Destroy(gameObject); //오브잭트 파괴
     }
-}
+
 ```
 
 </details>
