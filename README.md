@@ -13,7 +13,7 @@
 - 추가 기능 구현을 살펴보고 게임에 여러 요소를 더하여 우리만의 게임을 제작해봅시다.
     
 <details>
-<summary> 역할분담 </summary>
+<summary> 역할 분담 </summary>
 
 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
 2. 한예준 : Card (랜덤 이미지 삽입)
@@ -45,7 +45,7 @@
 - 게임 연출 추가
 - 각종 행동에 사운드 삽입
 <details>
-<summary> 열할 분담 </summary>
+<summary> 역할 분담 </summary>
 
 ## 1. 게임에 필요한 매니저 추가 작성
 게임 매니저 추가기능 작성 (송치웅)
