@@ -764,7 +764,8 @@ else if (currentStage >= 3)
 <details>
 <summary> 접기 </summary>
 
-[![게임 영상 보기](https://img.youtube.com/vi/3EbW_WE55qQ/0.jpg)](https://www.youtube.com/shorts/3EbW_WE55qQ)
+<img src="https://github.com/user-attachments/assets/4524e4cd-2411-4c41-9c6d-fa69aab1b415" width="300" />
+
 
 ```csharp
 
