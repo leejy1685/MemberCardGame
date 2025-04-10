@@ -279,10 +279,10 @@
 <summary> 작업물 </summary>
 
 ```csharp
-    public Transform Cards;  // 카드들을 배치할 부모 트랜스폼
-    public GameObject card;  // 카드 프리팹(GameObject)
+    public Transform Cards;
+    public GameObject card;
 
-    // 게임 시작 시 카드들을 생성하는 함수
+    // 게임 시작 시 카드들을 생성
     void Start()
     {
         // 카드에 할당될 번호 배열 (0~9까지의 숫자 두 개씩 포함)
@@ -291,7 +291,7 @@
         // 배열을 무작위로 섞음 (랜덤 번호 배치를 위해)
         arr = arr.OrderBy(x => Random.Range(0f, 9f)).ToArray();
 
-        // 카드 20개 생성 (배열 크기만큼)
+        // 카드 20개 생성
         for (int i = 0; i < 20; i++)
         {
             // 카드 프리팹을 인스턴스화하여 게임 오브젝트로 생성
