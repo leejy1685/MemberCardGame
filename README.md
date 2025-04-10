@@ -710,7 +710,7 @@ else if (currentStage >= 3)
     	{
         	if(stage == 3 && time <= 20) //히든 스테이지 조건 스테이지3 클리어 & 20초 이상 클리어
         	{	//히든 스테이지 오픈 조건에 맞으면 히든 스테이지로 바로 입장하는 버튼 생성
-            	hiddenStageStart.SetActive(false);
+            		hiddenStageStart.SetActive(false);
         	}
         	//배열로 구현된 클리어 판넬 
         	stageClearPanel[stage-1].SetActive(true);
