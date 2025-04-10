@@ -1,6 +1,6 @@
 ### 필수 구현 기능 제작
 <details>
-<summary> 필수 구현 기능   </summary>
+<summary> 필수 구현 기능 </summary>
     
     # 과제목표
     
@@ -17,11 +17,16 @@
     5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
 
 </details>
-    
-- 필수 구현 기능 와이어 프레임
+
+<details>
+<summary> 필수 구현 기능 와이어 프레임 </summary>
     
     ![image.png](attachment:781f48f2-d9c7-402d-bd42-7ee2d71eb071:image.png)
     
+</details>
+
+
+
 
 ### 추가 구현 기능 제작
 
