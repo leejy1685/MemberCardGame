@@ -72,7 +72,7 @@
     public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
     public GameObject front;  // 카드의 앞면
     public GameObject back;   // 카드의 뒷면
-    public Animator anim;  // 카드 애니메이션을 제어
+    public Animator anim;  // 카드 애니메이션 제어
 
     AudioSource audioSource;
     public AudioClip clip;
@@ -512,47 +512,92 @@ AudioManager.cs
 </details>
     
 ## 2. 게임에 연출 (한예준)
-카드가 뒤집어지는 모습을 애니메이션으로 추가
-- 카드를 클릭했을 때 애니메이션으로 Y축을 180도 회전
-- 두 카드의 사진이 서로 같을 시 회전하며 소멸하는 애니메이션 추가
-- 두 카드의 사진이 서로 다를 시
+- 카드가 등장할떄 애니메이션추가
+- 카드가 뒤집어지는 모습을 애니메이션으로 추가
+- 카드가 파괴되는 애니메이션 추가
+
 <details>
 <summary> 작업물 </summary>
 
 ```csharp
+public int idx = 0;  // 카드의 고유 번호를 저장하는 변수
+public GameObject front;  // 카드 앞면
+public GameObject back;  // 카드 뒷면
+public Animator anim;  // 카드의 애니메이션 제어
+public SpriteRenderer frontImage;  // 카드 앞면의 이미지를 표시
+AudioSource audioSource;
+public AudioClip clip;
 
-코드
+private void Start()
+{
+    anim = GetComponent<Animator>();  // Animator 컴포넌트를 가져옴
+    audioSource = GetComponent<AudioSource>();  // AudioSource 컴포넌트를 가져옴
+    front.SetActive(false);  // 카드 앞면을 처음에 보이지 않도록 설정
+    back.SetActive(true);  // 카드 뒷면을 처음에 보이도록 설정
+}
+
+public void OpenCard()
+{
+    anim.SetTrigger("flip");  // "flip" 트리거를 사용해 카드를 뒤집는 애니메이션을 시작
+
+    if (clip != null)
+        audioSource.PlayOneShot(clip);  // 사운드 클립을 한 번 재생
+
+    if (GameManager.Instance.firstCard == null)
+    {
+        GameManager.Instance.firstCard = this;  // 첫 번째 카드를 저장
+    }
+    else
+    {
+        GameManager.Instance.secondCard = this;  // 두 번째 카드를 저장
+        GameManager.Instance.isMatched();  // 카드 매칭 여부 확인
+    }
+}
+
+public void CloseCard()
+{
+    Invoke("CloseCardInvoke", 0.5f);  // 0.5초 후에 CloseCardInvoke 메서드 호출
+}
+
+private void CloseCardInvoke()
+{
+    anim.SetTrigger("flipback");  // "flipback" 트리거를 사용해 카드를 원위치로 뒤집는 애니메이션을 실행
+}
+
+public void SwitchToFront()
+{
+    front.SetActive(true);  // 카드 앞면을 보이게 설정
+    back.SetActive(false);  // 카드 뒷면을 숨김
+}
+
+public void SwitchToBack()
+{
+    front.SetActive(false);  // 카드 앞면을 숨김
+    back.SetActive(true);  // 카드 뒷면을 보이게 설정
+}
+
+public void DestroyCard()
+{
+    Invoke("DestroyCardInvoke", 0.5f);  // 0.5초 후에 DestroyCardInvoke 메서드 호출
+}
+
+private void DestroyCardInvoke()
+{
+    anim.SetTrigger("Destroy");  // "Destroy" 트리거를 사용해 카드 삭제 애니메이션 실행
+    Destroy(this.gameObject, 0.3f);  // 카드 객체를 0.3초 후에 파괴
+}
+
+public void setting(int number)
+{
+    idx = number;  // 카드의 고유 번호 설정
+    frontImage.sprite = Resources.Load<Sprite>($"Card{idx}");  // 카드 앞면 이미지를 Resources 폴더에서 로드하여 설정
+}
 
 ```
+애니메이션을 여러개 나누어 실행하고 이벤트를 나누어 앞면과 뒷면표현
+
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 ## 3. 스테이지 or 난이도 추가하기
 카드의 개수가 늘어난 더 어려운 스테이지 구현(윤지민)
 - 난이도 변수를 가져와 1줄씩 추가
