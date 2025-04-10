@@ -1,5 +1,5 @@
 ### 필수 구현 기능 제작
-
+<details>
 <summary> 필수 구현 기능   </summary>
     
     # 과제목표
