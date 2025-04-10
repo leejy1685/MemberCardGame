@@ -105,6 +105,15 @@
 </details>
 
 
+<details>
+<summary>트러블 슈팅</summary>
+
+
+
+</details>
+
+
+
 # 필수기능 시연영상
 <details>
 <summary>게임진행</summary>
@@ -135,15 +144,7 @@
 
 <img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
 
-</details>
 
-
-<details>
-<summary>트러블 슈팅</summary>
-
-
-
-</details>
 
 
 
