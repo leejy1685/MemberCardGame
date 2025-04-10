@@ -130,12 +130,14 @@
 
 </details>
 
+<details>
 <summary> 난이도증가 <summary>
 
 <img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="500" />
 
 </details>
 
+<details>
 <summary> 히든 스테이지 <summary>
 
 <img src="https://github.com/user-attachments/assets/08162e3f-3741-4ade-b44d-96fd312fe270" width="500" />
