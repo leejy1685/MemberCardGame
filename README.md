@@ -317,7 +317,7 @@
 <details>
 <summary>추가 구현 기능 와이어프레임</summary>
 
-![image (1)](https://github.com/user-attachments/assets/9bce4bca-68ec-476e-b479-f991524d396f)
+![image](https://github.com/user-attachments/assets/ad8d5fdf-4611-49c4-bc56-23df6d82f044)
 
 [FigJam 링크](https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0)
 
