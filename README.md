@@ -675,6 +675,7 @@ else if (currentStage >= 3)
 - 와이어 프레임 기반으로 UI제작
 <details>
 <summary> 작업물 </summary>
+	
 ![image](https://github.com/user-attachments/assets/bfdfc628-3913-41f6-9bc2-49523a48ad64)
 ![image](https://github.com/user-attachments/assets/ed84fc7a-d1ff-44f4-ab02-7c02e8795454)
 ![image](https://github.com/user-attachments/assets/ab933b87-f83c-47c6-9833-e06284373fdf)
