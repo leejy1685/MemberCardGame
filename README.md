@@ -119,7 +119,8 @@
 
 
 
-# 필수기능 시연영상
+# 시연영상
+## 필수기능 완성본 시연영상
 <details>
 <summary>게임진행</summary>
 
@@ -127,7 +128,8 @@
 
 </details>
 
-# 추가기능 시연영상
+## 추가기능 완성본 시연영상
+
 <details>
 <summary> 게임진행 </summary>
 
