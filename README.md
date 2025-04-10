@@ -131,14 +131,11 @@ public class Ink : MonoBehaviour
 
 </details>
 
-<details>
 
 
 
 
 
-
-</details>
 
 <details>
 <summary>트러블 슈팅</summary>
