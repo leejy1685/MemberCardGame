@@ -70,37 +70,18 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 게임의 클리어 기록을 초기화하기 위한 코드이다. StartScene에 있는 ResetCode 오브젝트를 활성화하고 실행하면 클리어 기록이 초기화 된다.
 ![image](https://github.com/user-attachments/assets/1933bbe6-d527-4eb1-8228-001a72ece823)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </details>
-
-
-
-
-
 
 2. 한예준 : Card (랜덤 이미지 삽입)
 3. 최홍진 : UI (시간 측정, 게임 종료 UI)
 4. 송치웅 : GameManager (게임 진행에 필요한 C# 작성)
 5. 윤지민 : Board (카드 랜덤 배치 및 뒤집기, 파괴)
+
+
+
+
+
+
 
 </details>
 
