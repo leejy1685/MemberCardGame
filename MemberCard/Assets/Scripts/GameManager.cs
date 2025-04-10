@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     //public GameObject hiddenPanel;
 
-    float time = 30.0f;
+    float time = 60.0f;
     int score = 0;
     bool time20 = true;
 
