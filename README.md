@@ -755,7 +755,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 <details>
 <summary> 접기 </summary>
 
-[게임 영상 보기](https://www.youtube.com/shorts/3EbW_WE55qQ)
+[![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
 
 ```csharp
 
