@@ -85,7 +85,8 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 <details>
 <summary> 작업물 </summary>
 와이어 프레임 기반으로 UI를 제작
-![image](https://github.com/user-attachments/assets/288e8270-247f-4d08-abc5-0459027883cb) ![image](https://github.com/user-attachments/assets/0ccec7a6-9bc0-48f5-a6ab-26d447d541ba)
+
+    ![image](https://github.com/user-attachments/assets/288e8270-247f-4d08-abc5-0459027883cb) ![image](https://github.com/user-attachments/assets/0ccec7a6-9bc0-48f5-a6ab-26d447d541ba)
 
 
 
