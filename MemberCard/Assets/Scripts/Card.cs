@@ -21,9 +21,9 @@ public class Card : MonoBehaviour
         back.SetActive(true);
     }
 
-    public void OpenCard()//play animation when the card is clicked
+    public void OpenCard()
     {
-        anim.SetTrigger("flip");
+        anim.SetTrigger("flip");//play animation when the card is clicked
 
         if (clip != null)
             audioSource.PlayOneShot(clip);
