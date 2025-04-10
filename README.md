@@ -746,25 +746,6 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 </details>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <details>
 <summary>트러블 슈팅</summary>
 
@@ -798,13 +779,6 @@ Text에 있는 Button 컴포넌트를 제거하고 작동 해 보았다.
 Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 쪽에 Button 컴포넌트가 없었는지 생각해보지 않았다. 그래서 더 해결하는데 시간이 걸렸던 것 같다.
 
 </details>
-
-
-
-
-
-
-
 
 # 한예준님
 <details>
@@ -896,35 +870,51 @@ secondCard.DestroyCard();
 
 
 
-
-
-
 # 윤지민님 
 <details>
 <summary> 접기 </summary>
 
 ```csharp
-
-코드
+int currentStage = GameManager.Instance.getStage() // int currentStage == GameManager.Instance.stage()(기능은 동일)
+문장을
+void Start()
+	{
+	}
 
 ```
+
+가장 고민을 많이 한 부분
+원인 분석
+```csharp
+int currentStage = GameManager.Instance.getStage() // int currentStage == GameManager.Instance.stage()(기능은 동일)
+
+```
+문장을
+```csharp
+void Start()
+	{
+
+	}
+
+```
+사이에 적지 않고 그 위에서 적용하여 현재 스테이지를 불러오지 못하는 문제가 있었다
+그냥 Board.cs에 적기만 하면 알아서
+```csharp
+int currentStage == GameManager.Instance.stage()
+
+```
+를 통하여 항시적으로 GameManager에서 현재 스테이지 정보를 불러 오는 줄 알았으나
+```csharp
+void Start()
+    {
+	int currentStage == GameManager.Instance.stage()
+    }
+```
+를 통해야 GameManager가 초기화 된 이후의 현재 저장된 사용자의 스테이지 값을 받아올 수 있었던 것
+
 </details>
 
-
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # 시연영상
@@ -958,46 +948,6 @@ secondCard.DestroyCard();
 [![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
 
 </details>
-
-
-
-
------------------------------------ 접기 예제 ----------------------------------------------
-
-
-<details>
-<summary> 접기 </summary>
-
-내용
-
-</details>
-
-
-
-
-코드 작성 하실분
-```csharp
-
-코드
-
-```
-
-
-
-
-
-<details>
-<summary> 작업물 </summary>
-
-```csharp
-
-코드
-
-```
-</details>
-
-
-
 
 
 
