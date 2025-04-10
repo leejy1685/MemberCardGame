@@ -753,7 +753,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 
 # 이준영님
 <details>
-<summary> 작업물 </summary>
+<summary> 접기 </summary>
 
 ```csharp
 
@@ -764,7 +764,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 
 # 한예준님
 <details>
-<summary> 작업물 </summary>
+<summary> 접기 </summary>
 
 ```csharp
 
@@ -775,7 +775,7 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 
 # 최홍진님
 <details>
-<summary> 작업물 </summary>
+<summary> 접기 </summary>
 
 ```csharp
 
@@ -786,19 +786,27 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 
 # 송치웅님
 <details>
-<summary> 작업물 </summary>
-
+<summary> 접기 </summary>
+	
+Card idx가 일치했을 때 코드 구성이 헷갈려서 강의 보고 만들었던 작업 결과물 찾아서 수정 했습니다.
 ```csharp
+// 변경 전
+Destroy(firstCard);
+Destroy(secondCard);
 
-코드
+// 변경 후 
+firstCard.DestroyCard();
+secondCard.DestroyCard();
 
 ```
+사전강의 들었을 땐 버전을 유니티6 [6000.0.36f1]을 사용했는데 PlayerPrefs가 없어져서 당시에는 다른 방법을 찾아서 적용했었습니다.
+[22.3.17f1] 버전으로 와서 처음 써보는 PlayerPrefs 를 사용하려고 강의도 찾아보고 구글도 검색하느라 시간을 많이 사용했습니다.
 </details>
 
 
 # 윤지민님 
 <details>
-<summary> 작업물 </summary>
+<summary> 접기 </summary>
 
 ```csharp
 
