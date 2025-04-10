@@ -188,6 +188,7 @@ BGMSound()가 있는 이유는 MainScene에서 실패한 후 돌아오면 사운
 -스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
 <summary> 작업물 </summary>
+
 Button.cs
 ```csharp
     AudioSource audioSource;
@@ -247,8 +248,8 @@ Button.cs
 
 ```
 Button.cs는 Button을 관리하기 위해서 만든 스크립트이다. StartStage는 GameManager에게 현재 스테이지 정보를 넘기는 역할도 하고 있다.
-
 Button이 한 스테이지에서 많이 있기도 하고 소리도 들어가야 하기 때문에 ButtonManager라는 오브젝트를 만들어서 관리하였다.
+
 </details>
 
 사운드 매니저 추가 (이준영)
@@ -304,10 +305,10 @@ AudioManager.cs
 
 ```
 AudioManager.cs는 주로 BGM을 다루는 스크립트이다. 게임 시작 시에는 BGM이 나오지만 게임 플레이 중 20초 이내로 가게 되면 hurry up 사운드와 함께 째깍째깍하는 소리로 바뀌게하기 위해서 timeOutSound()함수를 만들었다.
-
 AudioManager 오브젝트에는 AudioSource 컴포넌트의 loop를 true값으로 바꿔줘야 소리가 정상 작동 할 수 있다. 만약 이와 다른 방법으로 하고 싶다면 Start()함수에서 audioSource.loop = true; 를 추가하면 된다.
 
 </details>
+
     
 ## 2. 게임에 연출 (한예준)
 카드가 뒤집어지는 모습을 애니메이션으로 추가
@@ -328,6 +329,7 @@ AudioManager 오브젝트에는 AudioSource 컴포넌트의 loop를 true값으�
 ## 4.히든 스테이지 구현하기
 해금 조건  : 스테이지3을 20초 이상 남기고 클리어 (이준영)
 - 3스테이지 클리어시 20초 조건을 확인하여 만족 못할시 난이도 변수값 - / 만족시 해금
+
 <details>
 <summary> 작업물 </summary>
 게임 매니저는 내가 전부 만든게 아니라 내가 만든 부분만 적기로 하였다.
@@ -418,7 +420,6 @@ public GameObject hiddenStageStart;	//히든 스테이크 클리어 조건 만�
 
 ```
 다음은 사운드 기능이다. 남은 시간이 20초 미만이 되면 시간이 부족한 사운드로 변경을 해준다. 여기서 bool타입 변수로 해준 이유는 Update 함수에서 무한 반복 되면 소리가 첫 음만 계속 반복 되기 때문에 딱 한번만 실행 되도록 bool타입 변수로 조정 해주었다.
-
 카드가 일치하면 일치하는 소리가 일치하지 않으면 일치하지 않는 소리가 재생되도록 넣어주었다.
 ```csharp
 	int stage;
@@ -468,7 +469,7 @@ stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 
 </details>
 
     
-기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현. (최홍진)
+기본 베이스 스테이지 3에 중간 중간에 화면을 가리는 오브젝트 출현.
 - 잉크(커지고 점점 사라지는 효과)프리팹 생성(최홍진)
 <details>
 <summary> 프리팹 </summary>
@@ -480,7 +481,7 @@ stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 
 - 잉크 랜덤 드랍 (이준영)
 
 <details>
-<summary> Ink.cs </summary>
+<summary> 작업물 </summary>
 ```csharp
     
     void Start()
@@ -493,11 +494,8 @@ stage는 현재 스테이지를 말하고 stageClear는 내가 최대 플레이 
     }
 
 ```
-
 </details>
 
-
-</details>
 </details>
 
 
