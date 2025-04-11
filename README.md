@@ -31,7 +31,7 @@
 <details>
 <summary> 역할 분담 </summary>
 
-### 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환)
+### 1. 이준영 : StartScene, Audio(시작 화면, 화면 전환, 사운드 추가)
 <details>
 <summary> 작업물 </summary>
 
@@ -73,7 +73,7 @@ Button.cs
 오디오까지 고려하여 미리준비
 </details>
 
-### 2. 한예준 : Card (랜덤 이미지 삽입)
+### 2. 한예준 : Card (프리팹의 기능과 Card 애니메이션 담당)
 
 <details>
 <summary> 작업물 </summary>
