@@ -347,6 +347,8 @@ Board.cs
 
 <img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
 
+
+
 <img src="https://velog.velcdn.com/images/ghdwlsdl1/post/9108d430-76a3-44aa-a79f-bd89762be871/image.gif" width="300">
 
 </details>
