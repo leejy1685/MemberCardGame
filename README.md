@@ -886,11 +886,13 @@ Invoke가 실행되지 않는게 원인이었는데 이유를 알 수가 없어�
 <details>
 <summary> 접기 </summary>
 <img src="https://github.com/user-attachments/assets/4524e4cd-2411-4c41-9c6d-fa69aab1b415" width="300" />
+	
 이미지 위에 텍스트를 배치하고 그 안에 버튼을 넣는 방식으로 UI를 구성했을 때 예상치 못한 문제가 발생했습니다.
 
 GitHub에서 작업을 합치면서 이 점을 사전에 알리지 못했고, 이미지에 버튼을 만들어 버튼이 작동하지 않았습니다.
 
 ![image](https://github.com/user-attachments/assets/bfbf55e6-4df2-4bd4-b3e1-96ef0f004670)
+
 문제는 텍스트가 이미지보다 위에 배치되어 버튼이 텍스트에 가려져 클릭이 전달되지 않게 된 것이었습니다.
 
 즉, 버튼은 시각적으로 존재했으나 실제로는 텍스트가 버튼을 가리고 있어 버튼이 작동하지 않았습니다.
