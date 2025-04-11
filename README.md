@@ -798,25 +798,68 @@ else if (currentStage >= 3)
 <details>
 <summary> 접기 </summary>
 
-<img src="https://github.com/user-attachments/assets/4524e4cd-2411-4c41-9c6d-fa69aab1b415" width="300" />
+Invoke 미작동
+다 마무리 했다고 생각하고 테스트 하던 중 팀원 중 한분이 EndPanel에 RE? 버튼이 작동하지 않는 점을 찾아 주셨다.
+![image](https://github.com/user-attachments/assets/3c82b138-ca8a-408a-8b4b-24cc6dc83213)
+직접 테스트 해보니, Go라는 사운드는 들리는데 LoadScene이 실행이 되지 않았다.
+```csharp
+    public void retryButton()
+    {
+        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
+        Time.timeScale = 1.0f;
+        audioSource.PlayOneShot(clip);
+        Invoke("StartGameInvoke", 0.5f);
+    }
 
-프로젝트을 다 통합하고 Scene들을 연결하는 과정에서 버튼이 눌리지 않는 버그를 찾았다.
-stage1 Button이 눌려야 하는데 작동하지 않아서 코드가 잘 못 된건지 확인해보기 위해서 StartScene에서 MainScene으로 넘어가게 해보았다.
+```
+Button.cs에 있는 retryButton()이다. 혹시 getStage()에서 잘 못된 값을 가져와서 씬을 초기화 하지 못하는지 테스트 하기 위해서 Debug.Log()을 추가했다.
 
-![image](https://github.com/user-attachments/assets/8744a195-8331-4837-b7ef-b1ba7cdf66af)
+```csharp
+    public void retryButton()
+    {
+        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
+         Debug.Log(GameManager.Instance.getStage())
+        Time.timeScale = 1.0f;
+        audioSource.PlayOneShot(clip);
+        Invoke("StartGameInvoke", 0.5f);
+    }
 
-잘 작동 된다. 그러면 UI쪽을 배치하면서 잘 못 된것 같다. UI는 내가 작업한게 아니라 다른 브랜치에서 받아온 것이라 잘 살펴 보기로 하였다.
+```
+![image](https://github.com/user-attachments/assets/fc291c67-5b91-4a7c-a83e-4193197bc846)
 
-![image](https://github.com/user-attachments/assets/bfbf55e6-4df2-4bd4-b3e1-96ef0f004670)
+잘 되는것 같다.
 
-잘 확인해보니 내가 image 오브젝트에 직접 넣은 Button 컴포넌트가 아닌 Text 오브젝트에 Button가 들어가 있어서, image 보다 앞에 존재하는 Text의 버튼이 눌려서 작동이 하지 않는 것 같다.
-Text에 있는 Button 컴포넌트를 제거하고 작동 해 보았다.
+그러면 Go 라는 사운드 까지 잘 들렸으니 Invoke에 있는 StartGameInvoke안에 Debug를 찍어보기로 하였다.
 
-![image](https://github.com/user-attachments/assets/cf6f907e-6e35-4e82-88c0-8fb38d93df4a)
-	
-잘 작동한다.
-나는 UI에서 Button 오브젝트를 생성하면 나오는 것 처럼 Image 쪽에 Button 컴포넌트가 있을 거라 생각해서 나온 오류였다.
-Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 쪽에 Button 컴포넌트가 없었는지 생각해보지 않았다. 그래서 더 해결하는데 시간이 걸렸던 것 같다.
+```csharp
+    void StartGameInvoke()
+    {
+        Debug.Log("asdasdsad");
+        SceneManager.LoadScene("MainScene");
+    }
+
+```
+![image](https://github.com/user-attachments/assets/9f349894-475f-48cd-a249-3abca67af890)
+
+처음 stage1에 들어올 때는 작동이 되지만 Re? 버튼에선 작동하지 않는다. 아쉽지만 Go 사운드를 포기하고 Invoke를 LoadScene으로 고쳐 보기로 했다.
+
+```csharp
+    public void retryButton()
+    {
+        PlayerPrefs.SetInt("stage", GameManager.Instance.getStage());
+
+        Time.timeScale = 1.0f;
+		SceneManager.LoadScene("MainScene");
+    }
+
+```
+![image](https://github.com/user-attachments/assets/37124aab-ab02-4059-9ae9-1bae7af57428)
+
+잘 실행이 된다.
+
+Invoke가 실행되지 않는게 원인이었는데 이유를 알 수가 없어서 인터넷에 검색해 보니, timeScale이 0이 되어 있으면 작동 되지 않는다고 한다.
+아마 GameManager에서 남은 시간이 0초 이하가 되면 timeScale을 계속 0으로 고정 시키기 때문에 발생한 오류로 보인다.
+
 
 </details>
 
@@ -849,11 +892,12 @@ Image에 Button 컴포넌트는 내가 직접 추가한 부분인데, 왜 Image 
 # 최홍진님
 <details>
 <summary> 접기 </summary>
-
+<img src="https://github.com/user-attachments/assets/4524e4cd-2411-4c41-9c6d-fa69aab1b415" width="300" />
 이미지 위에 텍스트를 배치하고 그 안에 버튼을 넣는 방식으로 UI를 구성했을 때 예상치 못한 문제가 발생했습니다.
 
 GitHub에서 작업을 합치면서 이 점을 사전에 알리지 못했고, 이미지에 버튼을 만들어 버튼이 작동하지 않았습니다.
 
+![image](https://github.com/user-attachments/assets/bfbf55e6-4df2-4bd4-b3e1-96ef0f004670)
 문제는 텍스트가 이미지보다 위에 배치되어 버튼이 텍스트에 가려져 클릭이 전달되지 않게 된 것이었습니다.
 
 즉, 버튼은 시각적으로 존재했으나 실제로는 텍스트가 버튼을 가리고 있어 버튼이 작동하지 않았습니다.
