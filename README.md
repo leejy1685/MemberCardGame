@@ -725,7 +725,7 @@ else if (currentStage >= 3)
 <details>
 <summary> 작업물 </summary>
 
-GameManager.cs
+
 
 ```csharp
 
