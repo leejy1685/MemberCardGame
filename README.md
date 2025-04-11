@@ -20,6 +20,7 @@
 
 </details>
 
+## 필수 기능 기획
 <details>
 <summary>필수 구현 기능 와이어프레임</summary>
 
