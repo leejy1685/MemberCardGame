@@ -402,7 +402,7 @@ GameManager.cs
 ### 버튼 매니저 추가 (이준영)
 - 스테이지 이동 버튼, 게임 재시작 버튼 등 일괄 관리
 <details>
-<summary> 작업물1 </summary>
+<summary> 작업물 </summary>
 
 Button.cs
 
