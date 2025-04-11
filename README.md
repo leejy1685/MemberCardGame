@@ -12,6 +12,13 @@
 - 모든 카드 매칭 성공 시, 팀원들의 이름 및 사진 한 눈에 보여주기 / 실패 시 실패를 알리는 문구 노출
 - 추가 기능 구현을 살펴보고 게임에 여러 요소를 더하여 우리만의 게임을 제작해봅시다.
 
+## 필수기능 완성본 시연영상
+<details>
+<summary> 게임 진행 </summary>
+
+<img src="https://github.com/user-attachments/assets/a20a8476-f106-4137-a212-3f6d579540c5" width="300" />
+
+</details>
 
 <details>
 <summary>필수 구현 기능 와이어프레임</summary>
@@ -308,17 +315,26 @@ Board.cs
 
 </details>
 
+# 추가 구현 기능 제작
+## 추가기능 완성본 시연영상
 
-## 필수기능 완성본 시연영상
 <details>
 <summary> 게임 진행 </summary>
 
-<img src="https://github.com/user-attachments/assets/a20a8476-f106-4137-a212-3f6d579540c5" width="300" />
+<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="300" />
 
 </details>
 
+<details>
+<summary> 난이도 증가 </summary>
 
-# 추가 구현 기능 제작
+<img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
+
+</details>
+
+<details>
+<summary> 히든 스테이지 </summary>
+
 ## 추가 구현 기능 기획
 - 난이도 시스템 구현
   - 1스테이지: 12장 (3x4)
@@ -895,25 +911,6 @@ void Start()
 </details>
 
 </details>
-
-## 추가기능 완성본 시연영상
-
-<details>
-<summary> 게임 진행 </summary>
-
-<img src="https://github.com/user-attachments/assets/28233523-ce94-4f85-8ca4-bf58b4409bb5" width="300" />
-
-</details>
-
-<details>
-<summary> 난이도 증가 </summary>
-
-<img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
-
-</details>
-
-<details>
-<summary> 히든 스테이지 </summary>
 
 [![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
 
