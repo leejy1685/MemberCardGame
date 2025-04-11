@@ -902,14 +902,14 @@ void Start()
 사이에 적지 않고 그 위에서 적용하여 현재 스테이지를 불러오지 못하는 문제가 있었다
 그냥 Board.cs에 적기만 하면 알아서
 ```csharp
-int currentStage == GameManager.Instance.stage()
+int currentStage == GameManager.Instance.stage;
 
 ```
 를 통하여 항시적으로 GameManager에서 현재 스테이지 정보를 불러 오는 줄 알았으나
 ```csharp
 void Start()
     {
-	int currentStage == GameManager.Instance.stage()
+	int currentStage == GameManager.Instance.stage;
     }
 ```
 를 통해야 GameManager가 초기화 된 이후의 현재 저장된 사용자의 스테이지 값을 받아올 수 있었던 것
