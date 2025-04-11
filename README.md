@@ -346,13 +346,11 @@ Board.cs
 <summary> 난이도 증가 </summary>
 
 넥스트 스테이지
-
 <br>
 	
 <img src="https://github.com/user-attachments/assets/7ae69a64-b6df-4327-954e-cff5d7ca0cae" width="300" />
 
 <br>
-
 스테이지 오픈
 
 <br>
@@ -360,7 +358,6 @@ Board.cs
 <img src="https://velog.velcdn.com/images/ghdwlsdl1/post/9108d430-76a3-44aa-a79f-bd89762be871/image.gif" width="300">
 
 <br>
-
 히든 스테이지 오픈 실패
 
 <img src="https://github.com/user-attachments/assets/baf82ad1-700c-4c02-9e36-0cdc62de2572" width="300">
