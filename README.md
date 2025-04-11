@@ -186,7 +186,9 @@ Card.cs
 GameManager.cs
 
 ```csharp
- public static GameManager Instance;  // 싱글톤 패턴을 적용하여 다른 스크립트에서 접근할 수 있는 인스턴스
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance;  // 싱글톤 패턴을 적용하여 다른 스크립트에서 접근할 수 있는 인스턴스
 
     public Card firstCard;  // 첫 번째로 선택된 카드
     public Card secondCard;  // 두 번째로 선택된 카드
@@ -194,13 +196,17 @@ GameManager.cs
     public Text timeTxt;  // 시간 표시를 위한 UI 텍스트
     public Text scoreTxt;  // 점수 표시를 위한 UI 텍스트
     public Text stageTxt;  // 단계 표시를 위한 UI 텍스트
-    public GameObject endPanel;  // 게임 종료 시 표시될 UI 패널
-    public GameObject clearPanel;  // 게임 클리어 시 표시될 UI 패널
 
-    float time = 0.0f;  // 게임 시간
+    public GameObject hiddenStageStart; // 히든 스테이지
+    public GameObject ink; // 히든 스테이지 잉크
+    public GameObject endPanel; // 게임 종료 시 표시될 UI 패널
+    public GameObject[] stageClearPanel = new GameObject[4]; // 스테이지 배열
+
+    float time = 60.0f;  // 게임 시간
     int score = 0;  // 플레이어 점수
-    int stage = 1;  // 현재 게임 단계
     bool time20 = true;  // 20초 지났을 때 알림을 한 번만 보내기 위한 변수
+
+    int stage;
 
     public int cardCount = 0;  // 남은 카드 수
 
@@ -215,29 +221,47 @@ GameManager.cs
             Instance = this;  // 인스턴스가 없다면 현재 오브젝트를 인스턴스로 설정
     }
 
-
     void Start()
     {
-        Time.timeScale = 1.0f;  // 게임의 시간을 정상 속도로 설정
-        audioSource = GetComponent<AudioSource>();  // AudioSource 컴포넌트 가져오기
+        audioSource = GetComponent<AudioSource>(); // AudioSource 컴포넌트 가져오기
+        AudioManager.instance.BGMSound();
+        getStage();
+        Time.timeScale = 1.0f; // 게임의 시간을 정상 속도로 설정
+
+        if(stage == 4)  //hidden stage
+        {
+            InvokeRepeating("MakeInk", 0.0f, 1.5f);
+        }
     }
 
     void Update()
     {
-        // 시간 제한 체크 (30초가 지나면 게임 오버)
-        if (time > 30.0f)
-        {
-            time = 30.0f;  // 시간을 30초로 제한
-            Gameover();  // 게임 오버 호출
-            ShowEndUI();  // 게임 종료 UI 표시
-        }
-        else
-        {
-            time += Time.deltaTime;  // 시간이 지나면 `time` 변수에 누적
-        }
+        GameStart();
+    }
 
-        // 게임 시간이 UI에 표시되도록 업데이트
-        timeTxt.text = time.ToString("N2");  // 소수점 두 자리까지 표시
+    public void GameStart()
+    {
+        if (time < 0.0f) // time == 0s -> Timeover
+        {
+            time = 0.0f;
+            Timeover();
+            ShowEndUI();
+        }
+        else if (time < 20.0f && time20) // time < 20s -> AddSound
+        {
+            AudioManager.instance.timeOutSound();
+            time20 = false;
+        }
+        else // time != 0 -> time Decrement
+        {
+            time -= Time.deltaTime;
+        }
+        timeTxt.text = time.ToString("N2");
+    }
+
+    public void Timeover()
+    {
+        Time.timeScale = 0f;
     }
 
     // 카드 두 개가 맞는지 확인
@@ -278,11 +302,59 @@ GameManager.cs
         secondCard = null;
     }
 
-    // 게임 오버 처리
-    public void Gameover()
+    public void ShowEndUI()
     {
-        Time.timeScale = 0f;  // 게임 시간을 멈춤 (시간 흐르지 않게)
+        endPanel.SetActive(true);
+
+        scoreTxt.text = score.ToString();
+        stageTxt.text = stage.ToString();
     }
+
+    private void ShowClearUI()
+    {
+        if(stage == 3 && time <= 20)
+        {
+            hiddenStageStart.SetActive(false);
+        }
+        stageClearPanel[stage-1].SetActive(true);
+    }
+
+    public void PlayerSaveData()
+    {
+        int bestStage = PlayerPrefs.GetInt("stageClear");
+        stage++;
+        //best clear data save
+        if (bestStage < stage)
+        {
+            bestStage = stage;
+        }
+        //hidden stage open condition
+        if (stage == 4 && time <= 20)
+        {
+            stage--;
+            bestStage = stage;
+        }
+        //maxStage
+        if(bestStage > 4)
+        {
+            bestStage = 4;
+        }
+
+        PlayerPrefs.SetInt("stageClear", bestStage);
+        PlayerPrefs.Save();
+    }
+
+    public int getStage()
+    {
+        stage = PlayerPrefs.GetInt("stage");
+        return stage;
+    }
+
+    void MakeInk()
+    {
+        Instantiate(ink);
+    }
+}
 
 ```
 싱글톤 처리하여 작업진행
