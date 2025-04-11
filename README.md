@@ -308,6 +308,16 @@ Board.cs
 
 </details>
 
+
+## 필수기능 완성본 시연영상
+<details>
+<summary> 게임 진행 </summary>
+
+<img src="https://github.com/user-attachments/assets/a20a8476-f106-4137-a212-3f6d579540c5" width="300" />
+
+</details>
+
+
 # 추가 구현 기능 제작
 ## 추가 구현 기능 기획
 - 난이도 시스템 구현
@@ -881,16 +891,6 @@ void Start()
 를 통해야 GameManager가 초기화 된 이후의 현재 저장된 사용자의 스테이지 값을 받아올 수 있었던 것
 
 </details>
-
-</details>
-
-
-# 시연영상
-## 필수기능 완성본 시연영상
-<details>
-<summary> 게임 진행 </summary>
-
-<img src="https://github.com/user-attachments/assets/a20a8476-f106-4137-a212-3f6d579540c5" width="300" />
 
 </details>
 
