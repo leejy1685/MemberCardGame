@@ -340,10 +340,6 @@ Board.cs
 
 </details>
 
-
-<details>
-<summary> 히든 스테이지 </summary>
-
 ## 추가 구현 기능 기획
 - 난이도 시스템 구현
   - 1스테이지: 12장 (3x4)
