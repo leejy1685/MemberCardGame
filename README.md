@@ -378,6 +378,7 @@ GameManager.cs
 
 ```
 </details>
+
 - 게임 오버 시 점수와 스테이지 표기 추가
 <details>
 <summary> 작업물 </summary>
