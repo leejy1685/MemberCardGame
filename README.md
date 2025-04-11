@@ -146,7 +146,7 @@ Card.cs
 ```
 </details>
 
-### 3. 최홍진 : UI (시간 측정, 게임 종료 UI)
+### 3. 최홍진 : UI (와이어 프레임 작성, 시간 측정 UI, 게임 종료 UI)
 <details>
 <summary> 작업물 </summary>
 와이어 프레임 기반으로 UI를 제작
