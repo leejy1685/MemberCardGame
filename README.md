@@ -5,7 +5,7 @@
 
 
 
-# 필수 구현 기능 제작
+# 필수기능 제작
 ## 과제목표
     
 - 한 사람 당 본인을 대표할 수 있는 이미지를 필요한 만큼 준비해주세요.
@@ -20,7 +20,7 @@
 
 </details>
 
-## 필수 기능 기획
+## 필수기능 기획
 <details>
 <summary>필수 구현 기능 와이어프레임</summary>
 
@@ -316,7 +316,7 @@ Board.cs
 
 </details>
 
-# 추가 구현 기능 제작
+# 추가기능 제작
 
 ## 추가기능 완성본 시연영상
 
@@ -341,7 +341,7 @@ Board.cs
 
 </details>
 
-## 추가 구현 기능 기획
+## 추가기능 기획
 - 난이도 시스템 구현
   - 1스테이지: 12장 (3x4)
   - 2스테이지: 16장 (4x4)
@@ -363,16 +363,6 @@ Board.cs
 [FigJam 링크](https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0)
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 <details>
 <summary> 역할 분담 </summary>
