@@ -800,7 +800,6 @@ else if (currentStage >= 3)
 
 Invoke 미작동
 다 마무리 했다고 생각하고 테스트 하던 중 팀원 중 한분이 EndPanel에 RE? 버튼이 작동하지 않는 점을 찾아 주셨다.
-![image](https://github.com/user-attachments/assets/3c82b138-ca8a-408a-8b4b-24cc6dc83213)
 직접 테스트 해보니, Go라는 사운드는 들리는데 LoadScene이 실행이 되지 않았다.
 ```csharp
     public void retryButton()
@@ -813,7 +812,6 @@ Invoke 미작동
 
 ```
 Button.cs에 있는 retryButton()이다. 혹시 getStage()에서 잘 못된 값을 가져와서 씬을 초기화 하지 못하는지 테스트 하기 위해서 Debug.Log()을 추가했다.
-
 ```csharp
     public void retryButton()
     {
@@ -825,12 +823,10 @@ Button.cs에 있는 retryButton()이다. 혹시 getStage()에서 잘 못된 값�
     }
 
 ```
-![image](https://github.com/user-attachments/assets/fc291c67-5b91-4a7c-a83e-4193197bc846)
+![image](https://github.com/user-attachments/assets/df97050d-9d5e-4d77-8eff-fb8ae35384d6)
 
 잘 되는것 같다.
-
 그러면 Go 라는 사운드 까지 잘 들렸으니 Invoke에 있는 StartGameInvoke안에 Debug를 찍어보기로 하였다.
-
 ```csharp
     void StartGameInvoke()
     {
@@ -839,8 +835,7 @@ Button.cs에 있는 retryButton()이다. 혹시 getStage()에서 잘 못된 값�
     }
 
 ```
-![image](https://github.com/user-attachments/assets/9f349894-475f-48cd-a249-3abca67af890)
-
+![image](https://github.com/user-attachments/assets/e547ba67-c05a-42d4-a8ac-cc6c1b7d7b35)
 처음 stage1에 들어올 때는 작동이 되지만 Re? 버튼에선 작동하지 않는다. 아쉽지만 Go 사운드를 포기하고 Invoke를 LoadScene으로 고쳐 보기로 했다.
 
 ```csharp
@@ -854,8 +849,6 @@ Button.cs에 있는 retryButton()이다. 혹시 getStage()에서 잘 못된 값�
 
 ```
 ![image](https://github.com/user-attachments/assets/37124aab-ab02-4059-9ae9-1bae7af57428)
-
-잘 실행이 된다.
 
 Invoke가 실행되지 않는게 원인이었는데 이유를 알 수가 없어서 인터넷에 검색해 보니, timeScale이 0이 되어 있으면 작동 되지 않는다고 한다.
 아마 GameManager에서 남은 시간이 0초 이하가 되면 timeScale을 계속 0으로 고정 시키기 때문에 발생한 오류로 보인다.
