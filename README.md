@@ -316,6 +316,7 @@ Board.cs
 </details>
 
 # 추가 구현 기능 제작
+
 ## 추가기능 완성본 시연영상
 
 <details>
@@ -333,7 +334,11 @@ Board.cs
 </details>
 
 <details>
-<summary> 히든 스테이지 </summary>
+<summary> 히든스테이지 </summary>
+
+[![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
+
+</details>
 
 ## 추가 구현 기능 기획
 - 난이도 시스템 구현
@@ -357,6 +362,16 @@ Board.cs
 [FigJam 링크](https://www.figma.com/board/kqfsLfo242uS1RmSHz0248/Welcome-to-FigJam?node-id=0-1&p=f&t=LT1XHxGTUypk7tS4-0)
 
 </details>
+
+
+
+
+
+
+
+
+
+
 
 <details>
 <summary> 역할 분담 </summary>
@@ -907,12 +922,6 @@ void Start()
     }
 ```
 를 통해야 GameManager가 초기화 된 이후의 현재 저장된 사용자의 스테이지 값을 받아올 수 있었던 것
-
-</details>
-
-</details>
-
-[![게임 영상 보기](https://img.youtube.com/vi/rcHFXvefBkI/0.jpg)](https://www.youtube.com/shorts/rcHFXvefBkI)
 
 </details>
 
